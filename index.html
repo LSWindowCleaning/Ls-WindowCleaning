@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LS Window Cleaning | Professional Window Cleaning You Can Trust</title>
+  <meta name="description" content="Professional residential window cleaning serving Thornhill, North York, Richmond Hill, Vaughan, and surrounding areas. Interior & exterior. Streak-free guarantee." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --blue-50: #eff6ff;
+      --blue-100: #dbeafe;
+      --blue-200: #bfdbfe;
+      --blue-400: #60a5fa;
+      --blue-500: #3b82f6;
+      --blue-600: #2563eb;
+      --blue-700: #1d4ed8;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      line-height: 1.15;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      padding: 0.5rem 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+
+    .nav.scrolled .nav-logo { color: var(--black); }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      border-radius: 8px;
+      transition: height 0.3s;
+    }
+
+    .nav.scrolled .nav-logo img { height: 36px; }
+
+    .nav-logo-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .nav-logo-text small {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .nav.scrolled .nav-links a { color: var(--gray-600); }
+    .nav-links a:hover { color: var(--blue-400); }
+    .nav.scrolled .nav-links a:hover { color: var(--blue-600); }
+
+    .nav-cta {
+      background: var(--blue-600) !important;
+      color: var(--white) !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 100px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-700) !important;
+      transform: translateY(-1px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 6px 0;
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav.scrolled .mobile-toggle span { background: var(--black); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+
+    .hero-img-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('assets/photo3.jpg') center/cover no-repeat;
+      opacity: 0.3;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(165deg, rgba(10,10,10,0.85) 0%, rgba(15,23,42,0.7) 50%, rgba(30,58,95,0.6) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      color: var(--blue-400);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--blue-400), var(--blue-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--blue-600);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-700);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo-stack {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .hero-photo-main {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-photo-float {
+      position: absolute;
+      bottom: -30px;
+      left: -40px;
+      width: 180px;
+      border-radius: 14px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-slogan-card {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+
+    .hero-slogan-card .slogan-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-slogan-card .slogan-sub {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-stat-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 1.75rem 2rem;
+    }
+
+    .trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-500);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .trust-check {
+      color: var(--blue-600);
+      font-weight: 700;
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 6rem 2rem; }
+    .section-dark { background: var(--gray-900); color: var(--white); }
+    .section-light { background: var(--white); }
+    .section-alt { background: var(--gray-50); }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-header { text-align: center; margin-bottom: 4rem; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue-600);
+      margin-bottom: 1rem;
+    }
+
+    .section-dark .section-label { color: var(--blue-400); }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--gray-500);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-dark .section-desc { color: rgba(255, 255, 255, 0.5); }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card:hover { transform: translateY(-4px); }
+
+    .service-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card:hover .service-card-bg { transform: scale(1.05); }
+
+    .service-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.05) 100%);
+    }
+
+    .service-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    .service-card-content h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card-content p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      padding: 0;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: all 0.5s;
+      filter: saturate(0.8);
+    }
+
+    .gallery-strip img:hover {
+      filter: saturate(1.1);
+      transform: scale(1.02);
+    }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s;
+    }
+
+    .why-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .why-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .why-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .why-card p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ── AREAS ── */
+    .areas-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .areas-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/nice-house.jpg') center/cover no-repeat;
+      opacity: 0.07;
+    }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      position: relative;
+    }
+
+    .area-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .area-card:hover {
+      border-color: var(--blue-300);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .area-pin {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--blue-50);
+      color: var(--blue-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .area-pin svg { width: 20px; height: 20px; }
+
+    .area-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    .area-card p {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      margin-top: 0.15rem;
+    }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue-200), var(--blue-400), var(--blue-200));
+    }
+
+    .process-step { text-align: center; position: relative; z-index: 1; }
+
+    .process-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--blue-600);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .process-step h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      line-height: 1.5;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--blue-200);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .testimonial-stars {
+      color: #fbbf24;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card blockquote {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--gray-900);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-loc {
+      color: var(--gray-400);
+      font-size: 0.8rem;
+    }
+
+    /* ── QUOTE FORM ── */
+    .quote-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/modern-house.jpg') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    .quote-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(165deg, #0a0a0a 0%, #0f172a 50%, #1e3a5f 100%);
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-info { color: var(--white); padding-top: 1rem; }
+
+    .quote-info h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-info p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .quote-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .quote-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+    }
+
+    .quote-features li .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(59, 130, 246, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-400);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .quote-form-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s;
+      outline: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue-500);
+      background: rgba(59, 130, 246, 0.06);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='rgba(255,255,255,0.4)' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-group select option {
+      background: var(--gray-900);
+      color: var(--white);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--blue-600);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover {
+      background: var(--blue-700);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .form-note {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: var(--blue-600);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.15), transparent, rgba(0,0,0,0.15));
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .cta-banner p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--white);
+      color: var(--blue-700);
+      padding: 1rem 2.5rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand-logo img {
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .footer-brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .footer-desc {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col a {
+      display: block;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover { color: var(--blue-400); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; padding-top: 8rem; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-visual { display: none; }
+      .hero-stats { justify-content: center; }
+      .quote-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .section { padding: 4rem 1.5rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; align-items: center; }
+      .footer-top { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+      .areas-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-strip { grid-template-columns: 1fr 1fr; }
+      .gallery-strip img { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="assets/logo.png" alt="LS Window Cleaning" />
+        <span class="nav-logo-text">
+          LS Window Cleaning
+          <small>Reflection of Perfection</small>
+        </span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#areas">Areas</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#quote" class="nav-cta">Get a Free Quote</a></li>
+      </ul>
+      <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close menu">&times;</button>
+    <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+    <a href="#why-us" onclick="document.getElementById('mobileMenu').classList.remove('open')">Why Us</a>
+    <a href="#areas" onclick="document.getElementById('mobileMenu').classList.remove('open')">Areas</a>
+    <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
+    <a href="#quote" onclick="document.getElementById('mobileMenu').classList.remove('open')">Get a Free Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="assets/video_landscape1.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-img-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0l2 5h5l-4 3.5 1.5 5L8 10.5 3.5 13.5 5 8.5 1 5h5z"/></svg>
+          Trusted by Homeowners Across the GTA
+        </div>
+        <h1>Professional Window Cleaning <span class="highlight">You Can Trust</span></h1>
+        <p class="hero-sub">Serving Thornhill, North York, Richmond Hill, Vaughan, and surrounding areas. Streak-free, spotless results every time.</p>
+        <div class="hero-buttons">
+          <a href="#quote" class="btn-primary">
+            Get a Free Quote
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn-secondary">Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-value">500+</div>
+            <div class="hero-stat-label">Homes Cleaned</div>
+          </div>
+          <div>
+            <div class="hero-stat-value">100%</div>
+            <div class="hero-stat-label">Satisfaction</div>
+          </div>
+          <div>
+            <div class="hero-stat-value">7</div>
+            <div class="hero-stat-label">Areas Served</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo-stack">
+          <img class="hero-photo-main" src="assets/photo3.jpg" alt="Professional window cleaning in a modern home" />
+          <img class="hero-photo-float" src="assets/photo12.jpg" alt="Interior window cleaning" />
+          <div class="hero-slogan-card">
+            <div class="slogan-text">Reflection of Perfection</div>
+            <div class="slogan-sub">LS Window Cleaning</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="trust-check">&#10003;</span> Fully Insured</div>
+      <div class="trust-item"><span class="trust-check">&#10003;</span> Streak-Free Guarantee</div>
+      <div class="trust-item"><span class="trust-check">&#10003;</span> Flexible Scheduling</div>
+      <div class="trust-item"><span class="trust-check">&#10003;</span> 5-Star Rated</div>
+      <div class="trust-item"><span class="trust-check">&#10003;</span> Eco-Friendly Products</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section section-light" id="services">
+    <div class="section-inner">
+      <div class="section-header fade-up">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-desc">From single windows to full-home packages, we deliver spotless results with attention to every detail.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-card-bg" style="background-image: url('assets/photo1.jpg')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Interior Window Cleaning</h3>
+            <p>Crystal-clear interior windows without the mess. We protect your floors, sills, and furnishings while making every pane sparkle.</p>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card-bg" style="background-image: url('assets/photo10.jpg')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Exterior Window Cleaning</h3>
+            <p>Remove built-up grime, water spots, and debris from the outside. We handle all heights safely and leave your home looking brand new.</p>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card-bg" style="background-image: url('assets/photo6.jpg')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Screen Cleaning</h3>
+            <p>Dirty screens block light and airflow. We carefully remove, clean, and reinstall every screen so your windows breathe and shine.</p>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-card-bg" style="background-image: url('assets/photo7.jpg')"></div>
+          <div class="service-card-overlay"></div>
+          <div class="service-card-content">
+            <h3>Full Home Window Packages</h3>
+            <p>The complete treatment. Interior, exterior, and screens, all done in one visit. The best value for a total home transformation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY STRIP -->
+  <div class="gallery-strip">
+    <img src="assets/photo2.jpg" alt="Window cleaning with spray bottle" loading="lazy" />
+    <img src="assets/photo5.jpg" alt="Professional window squeegee work" loading="lazy" />
+    <img src="assets/photo4.jpg" alt="Residential window cleaning" loading="lazy" />
+    <img src="assets/photo9.jpg" alt="Clean window with garden view" loading="lazy" />
+  </div>
+
+  <!-- WHY US -->
+  <section class="section section-dark" id="why-us">
+    <div class="section-inner">
+      <div class="section-header fade-up">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">The LS Difference</h2>
+        <p class="section-desc">We are not just window cleaners. We are detail-obsessed professionals who treat your home like our own.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <div class="why-icon">&#128171;</div>
+          <h3>Meticulous Attention to Detail</h3>
+          <p>Every corner, edge, and frame is inspected. We do not cut corners, and it shows in the results.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">&#128176;</div>
+          <h3>Transparent, Fair Pricing</h3>
+          <p>No hidden fees, no surprise charges. You get a clear quote upfront and that is exactly what you pay.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">&#9200;</div>
+          <h3>Reliable and Punctual</h3>
+          <p>We show up on time, every time. Your schedule matters to us and we respect it completely.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">&#127793;</div>
+          <h3>Eco-Friendly Solutions</h3>
+          <p>Safe for your family, pets, and the environment. We use professional-grade, non-toxic cleaning products.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">&#128170;</div>
+          <h3>Experienced Professionals</h3>
+          <p>Trained, insured, and experienced. Our team knows how to handle every type of window and every type of home.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">&#129309;</div>
+          <h3>100% Satisfaction Guarantee</h3>
+          <p>If you are not completely happy, we will come back and make it right. No questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section-light">
+    <div class="section-inner">
+      <div class="section-header fade-up">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Simple as 1-2-3-4</h2>
+        <p class="section-desc">Getting sparkling clean windows has never been easier.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step fade-up">
+          <div class="process-num">1</div>
+          <h3>Request a Quote</h3>
+          <p>Fill out our quick form with your details. It takes less than 2 minutes.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="process-num">2</div>
+          <h3>Get Your Price</h3>
+          <p>We review your request and send a clear, no-obligation quote.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="process-num">3</div>
+          <h3>We Clean</h3>
+          <p>Our team arrives on schedule and delivers a spotless, streak-free clean.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="process-num">4</div>
+          <h3>Enjoy the View</h3>
+          <p>Sit back and enjoy your crystal-clear windows. It is that simple.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS -->
+  <section class="section areas-section section-alt" id="areas">
+    <div class="areas-bg"></div>
+    <div class="section-inner">
+      <div class="section-header fade-up">
+        <div class="section-label">Coverage</div>
+        <h2 class="section-title">Areas We Serve</h2>
+        <p class="section-desc">Proudly serving homeowners across the Greater Toronto Area's northern communities.</p>
+      </div>
+      <div class="areas-grid">
+        <div class="area-card fade-up">
+          <div class="area-pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div><h3>Thornhill</h3><p>Full service coverage</p></div>
+        </div>
+        <div class="area-card fade-up">
+          <div class="area-pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div><h3>Thornhill Woods</h3><p>Full service coverage</p></div>
+        </div>
+        <div class="area-card fade-up">
+          <div class="area-pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div><h3>North York</h3><p>Full service coverage</p></div>
+        </div>
+        <div class="area-card fade-up">
+          <div class="area-pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div><h3>Richmond Hill</h3><p>Full service coverage</p></div>
+        </div>
+        <div class="area-card fade-up">
+          <div class="area-pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div><h3>Newmarket</h3><p>Full service coverage</p></div>
+        </div>
+        <div class="area-card fade-up">
+          <div class="area-pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div><h3>Maple</h3><p>Full service coverage</p></div>
+        </div>
+        <div class="area-card fade-up">
+          <div class="area-pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div><h3>Vaughan</h3><p>Full service coverage</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-light" id="reviews">
+    <div class="section-inner">
+      <div class="section-header fade-up">
+        <div class="section-label">Happy Customers</div>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-desc">Do not just take our word for it. Here is what homeowners across the GTA have to say.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Absolutely incredible job. Our windows have never looked this clean. The team was professional, on time, and left zero streaks. Will definitely book again."</blockquote>
+          <div class="testimonial-author">Sarah M.</div>
+          <div class="testimonial-loc">Thornhill</div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"I have tried other companies before and LS is hands down the best. They are thorough, careful with the screens, and the difference is night and day."</blockquote>
+          <div class="testimonial-author">David R.</div>
+          <div class="testimonial-loc">Richmond Hill</div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Fast, friendly, and flawless. They did our entire home inside and out in a few hours. The sunlight coming through our clean windows is amazing now."</blockquote>
+          <div class="testimonial-author">Michelle T.</div>
+          <div class="testimonial-loc">Vaughan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section class="section quote-section section-dark" id="quote">
+    <div class="quote-bg"></div>
+    <div class="quote-overlay"></div>
+    <div class="section-inner">
+      <div class="quote-grid">
+        <div class="quote-info fade-up">
+          <div class="section-label">Free Estimate</div>
+          <h2>Get Your Free Quote Today</h2>
+          <p>Tell us about your home and we will get back to you with a clear, no-obligation quote. Most responses within a few hours.</p>
+          <ul class="quote-features">
+            <li><span class="check">&#10003;</span> No obligation, completely free</li>
+            <li><span class="check">&#10003;</span> Fast response, usually same day</li>
+            <li><span class="check">&#10003;</span> Transparent pricing, no hidden fees</li>
+            <li><span class="check">&#10003;</span> Flexible scheduling around your availability</li>
+            <li><span class="check">&#10003;</span> Fully insured for your peace of mind</li>
+          </ul>
+        </div>
+        <div class="quote-form-card fade-up">
+          <form id="quoteForm" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="John Smith" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(416) 555-0123" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <select id="city" name="city" required>
+                  <option value="" disabled selected>Select your area</option>
+                  <option value="Thornhill">Thornhill</option>
+                  <option value="Thornhill Woods">Thornhill Woods</option>
+                  <option value="North York">North York</option>
+                  <option value="Richmond Hill">Richmond Hill</option>
+                  <option value="Newmarket">Newmarket</option>
+                  <option value="Maple">Maple</option>
+                  <option value="Vaughan">Vaughan</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="address">Property Address</label>
+              <input type="text" id="address" name="address" placeholder="123 Main Street" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="storeys">Number of Storeys</label>
+                <select id="storeys" name="storeys" required>
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1 Storey</option>
+                  <option value="2">2 Storeys</option>
+                  <option value="3+">3+ Storeys</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="windows">Approx. Number of Windows</label>
+                <input type="number" id="windows" name="windows" placeholder="e.g. 15" min="1" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Request My Free Quote</button>
+            <p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Ready for Spotless Windows?</h2>
+    <p>Join hundreds of happy homeowners. Get your free quote in under 2 minutes.</p>
+    <a href="#quote" class="btn-white">
+      Get a Free Quote
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-logo">
+            <img src="assets/logo.png" alt="LS Window Cleaning" />
+            <span class="footer-brand-name">LS Window Cleaning</span>
+          </div>
+          <p class="footer-desc">Professional residential window cleaning serving the Greater Toronto Area. Streak-free results, every time.</p>
+          <p class="footer-desc" style="margin-top: 1rem; font-style: italic; color: rgba(255,255,255,0.25);">"Reflection of Perfection."</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Interior Cleaning</a>
+          <a href="#services">Exterior Cleaning</a>
+          <a href="#services">Screen Cleaning</a>
+          <a href="#services">Full Home Packages</a>
+        </div>
+        <div class="footer-col">
+          <h4>Service Areas</h4>
+          <a href="#areas">Thornhill</a>
+          <a href="#areas">North York</a>
+          <a href="#areas">Richmond Hill</a>
+          <a href="#areas">Vaughan</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:lswindowcleaninginquiries@gmail.com">Email Us</a>
+          <a href="#quote">Request a Quote</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 LS Window Cleaning. All rights reserved.</span>
+        <span>Serving the GTA with pride.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form submission via mailto
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      const subject = encodeURIComponent('New Quote Request from ' + data.get('fullName'));
+      const body = encodeURIComponent(
+        'NEW QUOTE REQUEST\n' +
+        '=================\n\n' +
+        'Name: ' + data.get('fullName') + '\n' +
+        'Phone: ' + data.get('phone') + '\n' +
+        'Email: ' + data.get('email') + '\n' +
+        'Address: ' + data.get('address') + '\n' +
+        'City: ' + data.get('city') + '\n' +
+        'Storeys: ' + data.get('storeys') + '\n' +
+        'Approx. Windows: ' + data.get('windows') + '\n\n' +
+        'Additional Notes:\n' + (data.get('notes') || 'None') + '\n'
+      );
+
+      window.location.href = 'mailto:lswindowcleaninginquiries@gmail.com?subject=' + subject + '&body=' + body;
+
+      const btn = form.querySelector('.form-submit');
+      const originalText = btn.textContent;
+      btn.textContent = 'Opening your email client...';
+      btn.style.background = '#059669';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
