@@ -1489,7 +1489,21 @@
               <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
             </div>
             <button type="submit" class="form-submit">Request My Free Quote</button>
-            <p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
+
+<div id="quoteResult" style="display:none; margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; color: white;">
+  <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">
+    Estimated Price
+  </div>
+  <div id="quotePrice" style="font-size: 1.8rem; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif;">
+    $0
+  </div>
+  <div style="font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem;">
+    This is an estimate. Final pricing may vary depending on access, window size, and condition.
+  </div>
+</div>
+
+<p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
+            
           </form>
         </div>
       </div>
@@ -1546,56 +1560,55 @@
   </footer>
 
   <script>
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  // Instant quote calculator
+  function calculateQuote(windows, storeys) {
+    let total = 100 + (windows * 5);
 
-    // Form submission via mailto
-    function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-
-      const subject = encodeURIComponent('New Quote Request from ' + data.get('fullName'));
-      const body = encodeURIComponent(
-        'NEW QUOTE REQUEST\n' +
-        '=================\n\n' +
-        'Name: ' + data.get('fullName') + '\n' +
-        'Phone: ' + data.get('phone') + '\n' +
-        'Email: ' + data.get('email') + '\n' +
-        'Address: ' + data.get('address') + '\n' +
-        'City: ' + data.get('city') + '\n' +
-        'Storeys: ' + data.get('storeys') + '\n' +
-        'Approx. Windows: ' + data.get('windows') + '\n\n' +
-        'Additional Notes:\n' + (data.get('notes') || 'None') + '\n'
-      );
-
-      window.location.href = 'mailto:lswindowcleaninginquiries@gmail.com?subject=' + subject + '&body=' + body;
-
-      const btn = form.querySelector('.form-submit');
-      const originalText = btn.textContent;
-      btn.textContent = 'Opening your email client...';
-      btn.style.background = '#059669';
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-      }, 3000);
+    if (storeys === "3+") {
+      total += 100;
     }
-  </script>
+
+    return total;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    const windows = parseInt(data.get('windows'), 10) || 0;
+    const storeys = data.get('storeys');
+
+    const total = calculateQuote(windows, storeys);
+
+    const quoteResult = document.getElementById('quoteResult');
+    const quotePrice = document.getElementById('quotePrice');
+
+    quotePrice.textContent = `$${total}`;
+    quoteResult.style.display = 'block';
+
+    quoteResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
 
 </body>
 </html>
