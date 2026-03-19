@@ -1206,6 +1206,20 @@
     font-size: 1.6rem;
   }
 }
+    .quote-book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  width: 100%;
+}
   </style>
 </head>
 <body>
@@ -1678,16 +1692,26 @@
   function makePriceLookBetter(value) {
     const rounded = Math.round(value);
     const lastDigit = rounded % 10;
-
-    if (lastDigit === 9) {
-      return rounded;
-    }
-
+    if (lastDigit === 9) return rounded;
     return rounded - ((lastDigit + 1) % 10);
   }
 
-  function formatPrice(value) {
-    return `$${makePriceLookBetter(value)}`;
+  function buildCalendlyLink(serviceName, estimatedPrice, data) {
+    const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
+
+    const params = new URLSearchParams({
+      name: data.get('fullName') || '',
+      email: data.get('email') || '',
+      a1: data.get('address') || '',
+      a2: data.get('city') || '',
+      a3: data.get('storeys') || '',
+      a4: data.get('windows') || '',
+      a5: data.get('notes') || '',
+      a6: serviceName,
+      a7: estimatedPrice
+    });
+
+    return `${base}?${params.toString()}`;
   }
 
   function handleSubmit(e) {
@@ -1703,17 +1727,29 @@
     const perWindow = 5;
     const extraThreeStorey = storeys === "3+" ? 100 : 0;
 
-    const justInterior = baseFee + (windows * perWindow) + extraThreeStorey;
-    const justExterior = baseFee + (windows * perWindow) + extraThreeStorey;
-    const justScreens = windows * 4;
-    const interiorAndExteriorOnly = justInterior + justExterior - 50;
-    const fullPackage = justInterior + justExterior + justScreens - 100;
+    const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+    const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+    const justScreensRaw = windows * 4;
+    const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
+    const fullPackageRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
 
-    document.getElementById('priceInterior').textContent = formatPrice(justInterior);
-    document.getElementById('priceExterior').textContent = formatPrice(justExterior);
-    document.getElementById('priceScreens').textContent = formatPrice(justScreens);
-    document.getElementById('priceWindows').textContent = formatPrice(interiorAndExteriorOnly);
-    document.getElementById('priceFull').textContent = formatPrice(fullPackage);
+    const justInterior = makePriceLookBetter(justInteriorRaw);
+    const justExterior = makePriceLookBetter(justExteriorRaw);
+    const justScreens = makePriceLookBetter(justScreensRaw);
+    const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
+    const fullPackage = makePriceLookBetter(fullPackageRaw);
+
+    document.getElementById('priceInterior').textContent = `$${justInterior}`;
+    document.getElementById('priceExterior').textContent = `$${justExterior}`;
+    document.getElementById('priceScreens').textContent = `$${justScreens}`;
+    document.getElementById('priceWindows').textContent = `$${interiorAndExterior}`;
+    document.getElementById('priceFull').textContent = `$${fullPackage}`;
+
+    document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior}`, data);
+    document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior}`, data);
+    document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens}`, data);
+    document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior}`, data);
+    document.getElementById('bookFull').href = buildCalendlyLink('Full Package', `$${fullPackage}`, data);
 
     document.getElementById('quotePopup').classList.add('open');
   }
@@ -1730,39 +1766,50 @@
     <button class="quote-popup-close" onclick="closeQuotePopup()" aria-label="Close quote popup">&times;</button>
 
     <h3>Your Instant Quote</h3>
-    <p class="quote-popup-sub">Here are your estimated service options based on the information you entered.</p>
+    <p class="quote-popup-sub">Choose the option you want and book right away.</p>
 
     <div class="quote-popup-grid">
       <div class="quote-option">
         <h4>Just Interior</h4>
         <div class="quote-option-price" id="priceInterior">$0</div>
         <p>Interior glass cleaning only.</p>
+        <a id="bookInterior" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Interior</a>
       </div>
 
       <div class="quote-option">
         <h4>Just Exterior</h4>
         <div class="quote-option-price" id="priceExterior">$0</div>
         <p>Exterior glass cleaning only.</p>
+        <a id="bookExterior" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Exterior</a>
       </div>
 
       <div class="quote-option">
         <h4>Just Screens</h4>
         <div class="quote-option-price" id="priceScreens">$0</div>
         <p>Screen removal, cleaning, and reinstall.</p>
+        <a id="bookScreens" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Screens</a>
       </div>
 
       <div class="quote-option">
         <h4>Interior + Exterior Only</h4>
         <div class="quote-option-price" id="priceWindows">$0</div>
         <p>Interior and exterior window cleaning with a bundled discount.</p>
+        <a id="bookWindows" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Interior + Exterior</a>
       </div>
 
       <div class="quote-option" style="grid-column: 1 / -1;">
         <h4>Full Package</h4>
         <div class="quote-option-price" id="priceFull">$0</div>
         <p>Interior, exterior, and screens included with the biggest bundled discount.</p>
+        <a id="bookFull" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Full Package</a>
       </div>
     </div>
+
+    <p class="quote-popup-note">
+      These are estimated prices. Final pricing may vary depending on window size, access, and condition.
+    </p>
+  </div>
+</div>
 
     <p class="quote-popup-note">
       These are estimated prices. Final pricing may vary depending on window size, access, and condition.
