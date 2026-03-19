@@ -1100,6 +1100,112 @@
       .gallery-strip { grid-template-columns: 1fr 1fr; }
       .gallery-strip img { height: 200px; }
     }
+    .quote-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+  padding: 1.5rem;
+}
+
+.quote-popup.open {
+  display: flex;
+}
+
+.quote-popup-card {
+  width: 100%;
+  max-width: 720px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+  position: relative;
+}
+
+.quote-popup-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f3f4f6;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.quote-popup h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.quote-popup-sub {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.quote-popup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.quote-option {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.25rem;
+  background: #f9fafb;
+}
+
+.quote-option h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.35rem;
+}
+
+.quote-option-price {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2563eb;
+  margin-bottom: 0.35rem;
+}
+
+.quote-option p {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.quote-popup-note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  .quote-popup-card {
+    padding: 1.5rem;
+  }
+
+  .quote-popup-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-popup h3 {
+    font-size: 1.6rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -1490,17 +1596,6 @@
             </div>
             <button type="submit" class="form-submit">Request My Free Quote</button>
 
-<div id="quoteResult" style="display:none; margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; color: white;">
-  <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">
-    Estimated Price
-  </div>
-  <div id="quotePrice" style="font-size: 1.8rem; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif;">
-    $0
-  </div>
-  <div style="font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem;">
-    This is an estimate. Final pricing may vary depending on access, window size, and condition.
-  </div>
-</div>
 
 <p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
             
@@ -1609,6 +1704,50 @@
     quoteResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 </script>
+  <div class="quote-popup" id="quotePopup">
+  <div class="quote-popup-card">
+    <button class="quote-popup-close" onclick="closeQuotePopup()" aria-label="Close quote popup">&times;</button>
+
+    <h3>Your Instant Quote</h3>
+    <p class="quote-popup-sub">Here are your estimated service options based on the information you entered.</p>
+
+    <div class="quote-popup-grid">
+      <div class="quote-option">
+        <h4>Just Interior</h4>
+        <div class="quote-option-price" id="priceInterior">$0</div>
+        <p>Interior glass cleaning only.</p>
+      </div>
+
+      <div class="quote-option">
+        <h4>Just Exterior</h4>
+        <div class="quote-option-price" id="priceExterior">$0</div>
+        <p>Exterior glass cleaning only.</p>
+      </div>
+
+      <div class="quote-option">
+        <h4>Just Screens</h4>
+        <div class="quote-option-price" id="priceScreens">$0</div>
+        <p>Screen removal, cleaning, and reinstall.</p>
+      </div>
+
+      <div class="quote-option">
+        <h4>Interior + Exterior Only</h4>
+        <div class="quote-option-price" id="priceWindows">$0</div>
+        <p>Interior and exterior window cleaning with a bundled discount.</p>
+      </div>
+
+      <div class="quote-option" style="grid-column: 1 / -1;">
+        <h4>Full Package</h4>
+        <div class="quote-option-price" id="priceFull">$0</div>
+        <p>Interior, exterior, and screens included with the biggest bundled discount.</p>
+      </div>
+    </div>
+
+    <p class="quote-popup-note">
+      These are estimated prices. Final pricing may vary depending on window size, access, and condition.
+    </p>
+  </div>
+</div>
 
 </body>
 </html>
