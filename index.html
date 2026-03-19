@@ -1695,24 +1695,25 @@
     if (lastDigit === 9) return rounded;
     return rounded - ((lastDigit + 1) % 10);
   }
+function buildCalendlyLink(serviceName, estimatedPrice, data) {
+  const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
 
-  function buildCalendlyLink(serviceName, estimatedPrice, data) {
-    const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
+  const fullAddress = `${data.get('address') || ''}, ${data.get('city') || ''}`;
 
-    const params = new URLSearchParams({
-      name: data.get('fullName') || '',
-      email: data.get('email') || '',
-      a1: data.get('address') || '',
-      a2: data.get('city') || '',
-      a3: data.get('storeys') || '',
-      a4: data.get('windows') || '',
-      a5: data.get('notes') || '',
-      a6: serviceName,
-      a7: estimatedPrice
-    });
+  const params = new URLSearchParams({
+    name: data.get('fullName') || '',
+    email: data.get('email') || '',
+    a1: fullAddress,
+    a2: data.get('phone') || '',
+    a3: data.get('storeys') || '',
+    a4: data.get('windows') || '',
+    a5: data.get('notes') || 'N/A',
+    a6: serviceName,
+    a7: estimatedPrice
+  });
 
-    return `${base}?${params.toString()}`;
-  }
+  return `${base}?${params.toString()}`;
+}
 
   function handleSubmit(e) {
     e.preventDefault();
