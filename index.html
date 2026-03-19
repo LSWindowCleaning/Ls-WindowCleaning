@@ -1655,13 +1655,11 @@
   </footer>
 
   <script>
-  // Nav scroll effect
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -1673,15 +1671,23 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Instant quote calculator
-  function calculateQuote(windows, storeys) {
-    let total = 100 + (windows * 5);
+  function closeQuotePopup() {
+    document.getElementById('quotePopup').classList.remove('open');
+  }
 
-    if (storeys === "3+") {
-      total += 100;
+  function makePriceLookBetter(value) {
+    const rounded = Math.round(value);
+    const lastDigit = rounded % 10;
+
+    if (lastDigit === 9) {
+      return rounded;
     }
 
-    return total;
+    return rounded - ((lastDigit + 1) % 10);
+  }
+
+  function formatPrice(value) {
+    return `$${makePriceLookBetter(value)}`;
   }
 
   function handleSubmit(e) {
@@ -1693,16 +1699,31 @@
     const windows = parseInt(data.get('windows'), 10) || 0;
     const storeys = data.get('storeys');
 
-    const total = calculateQuote(windows, storeys);
+    const baseFee = 100;
+    const perWindow = 5;
+    const extraThreeStorey = storeys === "3+" ? 100 : 0;
 
-    const quoteResult = document.getElementById('quoteResult');
-    const quotePrice = document.getElementById('quotePrice');
+    const justInterior = baseFee + (windows * perWindow) + extraThreeStorey;
+    const justExterior = baseFee + (windows * perWindow) + extraThreeStorey;
+    const justScreens = windows * 4;
+    const interiorAndExteriorOnly = justInterior + justExterior - 50;
+    const fullPackage = justInterior + justExterior + justScreens - 100;
 
-    quotePrice.textContent = `$${total}`;
-    quoteResult.style.display = 'block';
+    document.getElementById('priceInterior').textContent = formatPrice(justInterior);
+    document.getElementById('priceExterior').textContent = formatPrice(justExterior);
+    document.getElementById('priceScreens').textContent = formatPrice(justScreens);
+    document.getElementById('priceWindows').textContent = formatPrice(interiorAndExteriorOnly);
+    document.getElementById('priceFull').textContent = formatPrice(fullPackage);
 
-    quoteResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    document.getElementById('quotePopup').classList.add('open');
   }
+
+  window.addEventListener('click', function (e) {
+    const popup = document.getElementById('quotePopup');
+    if (e.target === popup) {
+      closeQuotePopup();
+    }
+  });
 </script>
   <div class="quote-popup" id="quotePopup">
   <div class="quote-popup-card">
