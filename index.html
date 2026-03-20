@@ -1100,17 +1100,19 @@
       .gallery-strip { grid-template-columns: 1fr 1fr; }
       .gallery-strip img { height: 200px; }
     }
-    .quote-popup {
+  .quote-popup {
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 10, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: none;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   z-index: 5000;
   padding: 1.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .quote-popup.open {
