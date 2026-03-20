@@ -1904,45 +1904,65 @@ function buildCalendlyLink(serviceName, estimatedPrice, data) {
   return `${base}?${params.toString()}`;
 }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+ function handleSubmit(e) {
+  e.preventDefault();
 
-    const form = e.target;
-    const data = new FormData(form);
+  const form = e.target;
+  const data = new FormData(form);
 
-    const windows = parseInt(data.get('windows'), 10) || 0;
-    const storeys = data.get('storeys');
+  const windows = parseInt(data.get('windows'), 10) || 0;
+  const storeys = data.get('storeys');
+  const promoCode = (data.get('promoCode') || '').trim().toUpperCase();
 
- const baseFee = 100;
-const perWindow = 4.5;
-const extraThreeStorey = storeys === "3+" ? 100 : 0;
+  const baseFee = 100;
+  const perWindow = 4.5;
+  const extraThreeStorey = storeys === "3+" ? 100 : 0;
 
-const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-const justScreensRaw = windows * 4;
-const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
-const fullPackageRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
+  const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+  const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+  const justScreensRaw = windows * 4;
+  const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
+  const fullPackageRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
 
-const justInterior = makePriceLookBetter(justInteriorRaw);
-const justExterior = makePriceLookBetter(justExteriorRaw);
-const justScreens = makePriceLookBetter(justScreensRaw);
-const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
-const fullPackage = makePriceLookBetter(fullPackageRaw);
+  const justInterior = makePriceLookBetter(justInteriorRaw);
+  const justExterior = makePriceLookBetter(justExteriorRaw);
+  const justScreens = makePriceLookBetter(justScreensRaw);
+  const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
 
-    document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
-    document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
-    document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
-    document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
-    document.getElementById('priceFull').textContent = `$${fullPackage.toFixed(2)}`;
+  const fullPackageOriginal = makePriceLookBetter(fullPackageRaw);
+  const promoApplied = promoCode === "SPRING26";
+  const fullPackageDiscounted = promoApplied
+    ? fullPackageOriginal - 50
+    : fullPackageOriginal;
 
- document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
-document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
-document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
-document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
-document.getElementById('bookFull').href = buildCalendlyLink('Full Package', `$${fullPackage.toFixed(2)}`, data);;
+  document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
+  document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
+  document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
+  document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
+  document.getElementById('priceFull').textContent = `$${fullPackageDiscounted.toFixed(2)}`;
 
-    document.getElementById('quotePopup').classList.add('open');
+  const oldPriceEl = document.getElementById('priceFullOld');
+
+  if (promoApplied) {
+    oldPriceEl.textContent = `$${fullPackageOriginal.toFixed(2)}`;
+    oldPriceEl.classList.add('show');
+  } else {
+    oldPriceEl.textContent = '';
+    oldPriceEl.classList.remove('show');
   }
+
+  document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
+  document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
+  document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
+  document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
+  document.getElementById('bookFull').href = buildCalendlyLink(
+    promoApplied ? 'Full Package (SPRING26 Applied)' : 'Full Package',
+    `$${fullPackageDiscounted.toFixed(2)}`,
+    data
+  );
+
+  document.getElementById('quotePopup').classList.add('open');
+}
   window.addEventListener('click', function (e) {
     const popup = document.getElementById('quotePopup');
     if (e.target === popup) {
