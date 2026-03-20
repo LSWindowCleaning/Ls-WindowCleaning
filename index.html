@@ -1339,6 +1339,19 @@
 .promo-popup-btn:hover {
   background: #1d4ed8;
 }
+  .promo-top-banner {
+  background: #111827;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.9rem 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.promo-top-banner strong {
+  color: #60a5fa;
+}
   </style>
 </head>
 <body>
@@ -1872,17 +1885,16 @@
   function closeQuotePopup() {
     document.getElementById('quotePopup').classList.remove('open');
   }
-    function closePromoPopup() {
+   function closePromoPopup() {
   document.getElementById('promoPopup').classList.remove('open');
 }
 
 window.addEventListener('load', function () {
-  setTimeout(() => {
-    const promoPopup = document.getElementById('promoPopup');
-    if (promoPopup) {
-      promoPopup.classList.add('open');
-    }
-  }, 700);
+  const promoPopup = document.getElementById('promoPopup');
+  if (promoPopup) {
+    promoPopup.classList.add('open');
+  }
+}); 700);
 });
 function makePriceLookBetter(value) {
   return Math.ceil(value) + 0.99;
@@ -2027,20 +2039,37 @@ function buildCalendlyLink(serviceName, estimatedPrice, data) {
   ...
 </div>
 
+<div class="quote-popup" id="quotePopup">
+  <div class="quote-popup-card">
+    <button class="quote-popup-close" onclick="closeQuotePopup()" aria-label="Close quote popup">&times;</button>
+
+    <h3>Your Instant Quote</h3>
+    <p class="quote-popup-sub">Choose the option you want and book right away.</p>
+
+    <div class="quote-popup-grid">
+      ...
+    </div>
+
+    <p class="quote-popup-note">
+      These are estimated prices. Final pricing may vary depending on window size, access, and condition.
+    </p>
+  </div>
+</div>
+
 <div class="promo-popup" id="promoPopup">
   <div class="promo-popup-card">
     <button class="promo-popup-close" onclick="closePromoPopup()" aria-label="Close promo popup">&times;</button>
 
     <div class="promo-popup-badge">Limited Time Offer</div>
-    <h3>Receive $50 Off</h3>
+    <h3>Get $50 Off</h3>
     <p>
-      Get <strong>$50 off</strong> when you select the <strong>Full Home Package</strong>.
-      Just apply the promo code when receiving your free quote.
+      Get <strong>$50 off</strong> when you book the <strong>Full Home Package</strong>.
+      Enter promo code <strong>SPRING26</strong> in the quote form.
     </p>
 
     <div class="promo-code-pill">SPRING26</div>
 
-    <a href="#quote" class="promo-popup-btn" onclick="closePromoPopup()">Claim My Offer</a>
+    <a href="#quote" class="promo-popup-btn" onclick="closePromoPopup()">Get My Quote</a>
   </div>
 </div>
 
