@@ -931,37 +931,7 @@
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.3);
     }
-    <section class="section section-light" id="faq">
-  <div class="section-inner">
-    <div class="section-header fade-up">
-      <div class="section-label">Questions</div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-desc">Answers to common questions about our residential window cleaning services.</p>
-    </div>
-
-    <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 1rem;">
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How much does window cleaning cost in Markham?</h3>
-        <p style="color: #6b7280;">Pricing depends on the number of windows, the number of storeys, and the services you select. Use our quote form to get an instant estimate for your home.</p>
-      </div>
-
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you clean interior and exterior windows?</h3>
-        <p style="color: #6b7280;">Yes. We offer interior window cleaning, exterior window cleaning, screen cleaning, and full home window packages.</p>
-      </div>
-
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you serve Aurora and Brampton?</h3>
-        <p style="color: #6b7280;">Yes. We proudly serve Aurora, Brampton, Thornhill, Vaughan, Markham, Richmond Hill, and nearby areas.</p>
-      </div>
-
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How often should home windows be cleaned?</h3>
-        <p style="color: #6b7280;">Many homeowners book professional window cleaning seasonally or two to four times per year, depending on the home, weather, and surrounding trees or dust.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  
 
     /* ── CTA BANNER ── */
     .cta-banner {
@@ -1646,25 +1616,31 @@
               <label for="address">Property Address</label>
               <input type="text" id="address" name="address" placeholder="123 Main Street" required />
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="storeys">Number of Storeys</label>
-                <select id="storeys" name="storeys" required>
-                  <option value="" disabled selected>Select</option>
-                  <option value="1">1 Storey</option>
-                  <option value="2">2 Storeys</option>
-                  <option value="3+">3+ Storeys</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="windows">Approx. Number of Windows</label>
-                <input type="number" id="windows" name="windows" placeholder="e.g. 15" min="1" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="notes">Additional Notes</label>
-              <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
-            </div>
+         <div class="form-row">
+  <div class="form-group">
+    <label for="storeys">Number of Storeys</label>
+    <select id="storeys" name="storeys" required>
+      <option value="" disabled selected>Select</option>
+      <option value="1">1 Storey</option>
+      <option value="2">2 Storeys</option>
+      <option value="3+">3+ Storeys</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="windows">Approx. Number of Windows</label>
+    <input type="number" id="windows" name="windows" placeholder="e.g. 15" min="1" required />
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="promoCode">Promo Code</label>
+  <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code" />
+</div>
+
+<div class="form-group">
+  <label for="notes">Additional Notes</label>
+  <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
+</div>
             <button type="submit" class="form-submit">Request My Free Quote</button>
 
 
@@ -1675,6 +1651,38 @@
       </div>
     </div>
   </section>
+
+    <section class="section section-light" id="faq">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-label">Questions</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-desc">Answers to common questions about our residential window cleaning services.</p>
+    </div>
+
+    <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 1rem;">
+      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How much does window cleaning cost in Markham?</h3>
+        <p style="color: #6b7280;">Pricing depends on the number of windows, the number of storeys, and the services you select. Use our quote form to get an instant estimate for your home.</p>
+      </div>
+
+      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you clean interior and exterior windows?</h3>
+        <p style="color: #6b7280;">Yes. We offer interior window cleaning, exterior window cleaning, screen cleaning, and full home window packages.</p>
+      </div>
+
+      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you serve Aurora and Brampton?</h3>
+        <p style="color: #6b7280;">Yes. We proudly serve Aurora, Brampton, Thornhill, Vaughan, Markham, Richmond Hill, and nearby areas.</p>
+      </div>
+
+      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How often should home windows be cleaned?</h3>
+        <p style="color: #6b7280;">Many homeowners book professional window cleaning seasonally or two to four times per year, depending on the home, weather, and surrounding trees or dust.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- CTA BANNER -->
   <div class="cta-banner">
