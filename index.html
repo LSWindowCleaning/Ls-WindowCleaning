@@ -1869,10 +1869,20 @@
   function closeQuotePopup() {
     document.getElementById('quotePopup').classList.remove('open');
   }
+    function closePromoPopup() {
+  document.getElementById('promoPopup').classList.remove('open');
+}
 
- function makePriceLookBetter(value) {
-  const rounded = Math.round(value);
-  return rounded + 0.99;
+window.addEventListener('load', function () {
+  setTimeout(() => {
+    const promoPopup = document.getElementById('promoPopup');
+    if (promoPopup) {
+      promoPopup.classList.add('open');
+    }
+  }, 700);
+});
+function makePriceLookBetter(value) {
+  return Math.ceil(value) + 0.99;
 }
 function buildCalendlyLink(serviceName, estimatedPrice, data) {
   const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
