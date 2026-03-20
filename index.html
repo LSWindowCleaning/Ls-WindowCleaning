@@ -1749,12 +1749,10 @@
     document.getElementById('quotePopup').classList.remove('open');
   }
 
-  function makePriceLookBetter(value) {
-    const rounded = Math.round(value);
-    const lastDigit = rounded % 10;
-    if (lastDigit === 9) return rounded;
-    return rounded - ((lastDigit + 1) % 10);
-  }
+ function makePriceLookBetter(value) {
+  const rounded = Math.round(value);
+  return rounded + 0.99;
+}
 function buildCalendlyLink(serviceName, estimatedPrice, data) {
   const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
 
@@ -1784,33 +1782,33 @@ function buildCalendlyLink(serviceName, estimatedPrice, data) {
     const windows = parseInt(data.get('windows'), 10) || 0;
     const storeys = data.get('storeys');
 
-    const baseFee = 100;
-    const perWindow = 5;
-    const extraThreeStorey = storeys === "3+" ? 100 : 0;
+ const baseFee = 100;
+const perWindow = 4.5;
+const extraThreeStorey = storeys === "3+" ? 100 : 0;
 
-    const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-    const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-    const justScreensRaw = windows * 4;
-    const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
-    const fullPackageRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
+const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+const justScreensRaw = windows * 4;
+const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
+const fullPackageRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
 
-    const justInterior = makePriceLookBetter(justInteriorRaw);
-    const justExterior = makePriceLookBetter(justExteriorRaw);
-    const justScreens = makePriceLookBetter(justScreensRaw);
-    const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
-    const fullPackage = makePriceLookBetter(fullPackageRaw);
+const justInterior = makePriceLookBetter(justInteriorRaw);
+const justExterior = makePriceLookBetter(justExteriorRaw);
+const justScreens = makePriceLookBetter(justScreensRaw);
+const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
+const fullPackage = makePriceLookBetter(fullPackageRaw);
 
-    document.getElementById('priceInterior').textContent = `$${justInterior}`;
-    document.getElementById('priceExterior').textContent = `$${justExterior}`;
-    document.getElementById('priceScreens').textContent = `$${justScreens}`;
-    document.getElementById('priceWindows').textContent = `$${interiorAndExterior}`;
-    document.getElementById('priceFull').textContent = `$${fullPackage}`;
+    document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
+    document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
+    document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
+    document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
+    document.getElementById('priceFull').textContent = `$${fullPackage.toFixed(2)}`;
 
-    document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior}`, data);
-    document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior}`, data);
-    document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens}`, data);
-    document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior}`, data);
-    document.getElementById('bookFull').href = buildCalendlyLink('Full Package', `$${fullPackage}`, data);
+ document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
+document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
+document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
+document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
+document.getElementById('bookFull').href = buildCalendlyLink('Full Package', `$${fullPackage.toFixed(2)}`, data);;
 
     document.getElementById('quotePopup').classList.add('open');
   }
