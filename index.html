@@ -1814,7 +1814,6 @@ function buildCalendlyLink(serviceName, estimatedPrice, data) {
 
     document.getElementById('quotePopup').classList.add('open');
   }
-
   window.addEventListener('click', function (e) {
     const popup = document.getElementById('quotePopup');
     if (e.target === popup) {
@@ -1822,7 +1821,8 @@ function buildCalendlyLink(serviceName, estimatedPrice, data) {
     }
   });
 </script>
-  <div class="quote-popup" id="quotePopup">
+
+<div class="quote-popup" id="quotePopup">
   <div class="quote-popup-card">
     <button class="quote-popup-close" onclick="closeQuotePopup()" aria-label="Close quote popup">&times;</button>
 
@@ -1865,12 +1865,6 @@ function buildCalendlyLink(serviceName, estimatedPrice, data) {
         <a id="bookFull" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Full Package</a>
       </div>
     </div>
-
-    <p class="quote-popup-note">
-      These are estimated prices. Final pricing may vary depending on window size, access, and condition.
-    </p>
-  </div>
-</div>
 
     <p class="quote-popup-note">
       These are estimated prices. Final pricing may vary depending on window size, access, and condition.
