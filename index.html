@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Window Cleaning in Thornhill, Vaughan, Markham & Richmond Hill | LS Window Cleaning</title>
+  <title>Window Cleaning in Thornhill, Vaughan, Markham & Richmond Hill | LS Window Cleaning</title>
   <meta name="description" content="Residential window cleaning in Thornhill, Vaughan, Markham, Richmond Hill and nearby areas. Interior, exterior and screen cleaning with streak-free results." />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,6 +19,7 @@
       --blue-50: #eff6ff;
       --blue-100: #dbeafe;
       --blue-200: #bfdbfe;
+      --blue-300: #93c5fd;
       --blue-400: #60a5fa;
       --blue-500: #3b82f6;
       --blue-600: #2563eb;
@@ -50,7 +52,6 @@
       line-height: 1.15;
     }
 
-    /* ── NAV ── */
     .nav {
       position: fixed;
       top: 0;
@@ -201,7 +202,6 @@
       cursor: pointer;
     }
 
-    /* ── HERO ── */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -225,7 +225,7 @@
     }
 
     .hero-img-bg {
-      display: none
+      display: none;
     }
 
     .hero-overlay {
@@ -416,7 +416,6 @@
       margin-top: 0.25rem;
     }
 
-    /* ── TRUST BAR ── */
     .trust-bar {
       background: var(--gray-50);
       border-top: 1px solid var(--gray-100);
@@ -448,7 +447,20 @@
       font-weight: 700;
     }
 
-    /* ── SECTIONS ── */
+    .promo-top-banner {
+      background: #111827;
+      color: #ffffff;
+      text-align: center;
+      padding: 0.9rem 1rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+    }
+
+    .promo-top-banner strong {
+      color: #60a5fa;
+    }
+
     .section { padding: 6rem 2rem; }
     .section-dark { background: var(--gray-900); color: var(--white); }
     .section-light { background: var(--white); }
@@ -486,7 +498,6 @@
 
     .section-dark .section-desc { color: rgba(255, 255, 255, 0.5); }
 
-    /* ── SERVICES ── */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -541,7 +552,6 @@
       line-height: 1.6;
     }
 
-    /* ── GALLERY ── */
     .gallery-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -562,7 +572,6 @@
       transform: scale(1.02);
     }
 
-    /* ── WHY US ── */
     .why-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -601,7 +610,6 @@
       line-height: 1.6;
     }
 
-    /* ── AREAS ── */
     .areas-section {
       position: relative;
       overflow: hidden;
@@ -664,7 +672,6 @@
       margin-top: 0.15rem;
     }
 
-    /* ── PROCESS ── */
     .process-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -713,7 +720,6 @@
       line-height: 1.5;
     }
 
-    /* ── TESTIMONIALS ── */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -759,7 +765,6 @@
       font-size: 0.8rem;
     }
 
-    /* ── QUOTE FORM ── */
     .quote-section {
       position: relative;
       overflow: hidden;
@@ -931,9 +936,7 @@
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.3);
     }
-  
 
-    /* ── CTA BANNER ── */
     .cta-banner {
       padding: 5rem 2rem;
       text-align: center;
@@ -986,7 +989,6 @@
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 
-    /* ── FOOTER ── */
     .footer {
       background: var(--black);
       color: var(--white);
@@ -1055,9 +1057,10 @@
       padding-top: 2rem;
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.3);
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -1069,7 +1072,188 @@
       transform: translateY(0);
     }
 
-    /* ── RESPONSIVE ── */
+    .quote-popup,
+    .promo-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 6000;
+      padding: 1.5rem;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .quote-popup.open,
+    .promo-popup.open {
+      display: flex;
+    }
+
+    .quote-popup-card,
+    .promo-popup-card {
+      width: 100%;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    .quote-popup-card { max-width: 720px; }
+    .promo-popup-card { max-width: 520px; text-align: center; }
+
+    .quote-popup-close,
+    .promo-popup-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #f3f4f6;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .quote-popup h3,
+    .promo-popup h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 0.75rem;
+    }
+
+    .quote-popup-sub,
+    .promo-popup p {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .quote-popup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .quote-option {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.25rem;
+      background: #f9fafb;
+    }
+
+    .quote-option h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.35rem;
+    }
+
+    .quote-option-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2563eb;
+      margin-bottom: 0.35rem;
+    }
+
+    .quote-option p {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .quote-option-old-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #9ca3af;
+      text-decoration: line-through;
+      margin-bottom: 0.2rem;
+      display: none;
+    }
+
+    .quote-option-old-price.show {
+      display: block;
+    }
+
+    .quote-book-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    .quote-book-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .quote-popup-note {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .promo-popup-badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .promo-code-pill {
+      display: inline-block;
+      background: #111827;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .promo-popup-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.95rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .promo-popup-btn:hover {
+      background: #1d4ed8;
+    }
+
     @media (max-width: 1024px) {
       .hero-content { grid-template-columns: 1fr; text-align: center; padding-top: 8rem; }
       .hero-sub { margin-left: auto; margin-right: auto; }
@@ -1100,352 +1284,16 @@
       .services-grid { grid-template-columns: 1fr; }
       .gallery-strip { grid-template-columns: 1fr 1fr; }
       .gallery-strip img { height: 200px; }
+      .quote-popup-card,
+      .promo-popup-card { padding: 1.5rem; }
+      .quote-popup-grid { grid-template-columns: 1fr; }
+      .quote-popup h3,
+      .promo-popup h3 { font-size: 1.6rem; }
     }
-  .quote-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: none;
-  align-items: flex-start;
-  justify-content: center;
-  z-index: 5000;
-  padding: 1.5rem;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.quote-popup.open {
-  display: flex;
-}
-
-.quote-popup-card {
-  width: 100%;
-  max-width: 720px;
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 2rem;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.35);
-  position: relative;
-}
-
-.quote-popup-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #f3f4f6;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  cursor: pointer;
-}
-
-.quote-popup h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 0.5rem;
-}
-
-.quote-popup-sub {
-  color: #6b7280;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-}
-
-.quote-popup-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.quote-option {
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 1.25rem;
-  background: #f9fafb;
-}
-
-.quote-option h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.35rem;
-}
-
-.quote-option-price {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #2563eb;
-  margin-bottom: 0.35rem;
-}
-
-.quote-option p {
-  font-size: 0.9rem;
-  color: #6b7280;
-}
-
-.quote-popup-note {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: #6b7280;
-}
-
-@media (max-width: 768px) {
-  .quote-popup-card {
-    padding: 1.5rem;
-  }
-
-  .quote-popup-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .quote-popup h3 {
-    font-size: 1.6rem;
-  }
-}
-    .quote-book-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-  background: #2563eb;
-  color: white;
-  text-decoration: none;
-  padding: 0.85rem 1rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  width: 100%;
-}
-
-.quote-option-old-price {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #9ca3af;
-  text-decoration: line-through;
-  margin-bottom: 0.2rem;
-  display: none;
-}
-
-.quote-option-old-price.show {
-  display: block;
-}
-
-.promo-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 6000;
-  padding: 1.5rem;
-}
-
-.promo-popup.open {
-  display: flex;
-}
-
-.promo-popup-card {
-  width: 100%;
-  max-width: 520px;
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 2rem;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.35);
-  position: relative;
-  text-align: center;
-}
-
-.promo-popup-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #f3f4f6;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  cursor: pointer;
-}
-
-.promo-popup-badge {
-  display: inline-block;
-  background: #eff6ff;
-  color: #2563eb;
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 0.45rem 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.promo-popup h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 0.75rem;
-}
-
-.promo-popup p {
-  color: #6b7280;
-  font-size: 1rem;
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
-}
-
-.promo-code-pill {
-  display: inline-block;
-  background: #111827;
-  color: #ffffff;
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
-}
-
-.promo-popup-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #2563eb;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 0.95rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-}
-
-.promo-popup-btn:hover {
-  background: #1d4ed8;
-}
-  .promo-top-banner {
-  background: #111827;
-  color: #ffffff;
-  text-align: center;
-  padding: 0.9rem 1rem;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
-}
-
-.promo-top-banner strong {
-  color: #60a5fa;
-}
-
-.promo-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.78);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 6000;
-  padding: 1.5rem;
-}
-
-.promo-popup.open {
-  display: flex;
-}
-
-.promo-popup-card {
-  width: 100%;
-  max-width: 520px;
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 2rem;
-  box-shadow: 0 25px 80px rgba(0,0,0,0.35);
-  position: relative;
-  text-align: center;
-}
-
-.promo-popup-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #f3f4f6;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  cursor: pointer;
-}
-
-.promo-popup-badge {
-  display: inline-block;
-  background: #eff6ff;
-  color: #2563eb;
-  font-weight: 700;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 0.45rem 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.promo-popup h3 {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 0.75rem;
-}
-
-.promo-popup p {
-  color: #6b7280;
-  font-size: 1rem;
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
-}
-
-.promo-code-pill {
-  display: inline-block;
-  background: #111827;
-  color: #ffffff;
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
-}
-
-.promo-popup-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #2563eb;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 0.95rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 700;
-}
-
-.promo-popup-btn:hover {
-  background: #1d4ed8;
-}
-</style>
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
@@ -1455,21 +1303,22 @@
           <small>Reflection of Perfection</small>
         </span>
       </a>
+
       <ul class="nav-links">
-  <li><a href="#services">Services</a></li>
-  <li><a href="#why-us">Why Us</a></li>
-  <li><a href="#areas">Areas</a></li>
-  <li><a href="#reviews">Reviews</a></li>
-  <li><a href="tel:14169397024">(416) 939-7024</a></li>
-  <li><a href="#quote" class="nav-cta">Get a Free Quote</a></li>
-</ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#areas">Areas</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="tel:14169397024">(416) 939-7024</a></li>
+        <li><a href="#quote" class="nav-cta">Get a Free Quote</a></li>
+      </ul>
+
       <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close menu">&times;</button>
     <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
@@ -1479,23 +1328,26 @@
     <a href="#quote" onclick="document.getElementById('mobileMenu').classList.remove('open')">Get a Free Quote</a>
   </div>
 
-  <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-video-wrap">
       <video autoplay muted loop playsinline>
         <source src="video_landscape1.mp4" type="video/mp4" />
       </video>
     </div>
+
     <div class="hero-img-bg"></div>
     <div class="hero-overlay"></div>
+
     <div class="hero-content">
       <div>
         <div class="hero-badge">
           <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0l2 5h5l-4 3.5 1.5 5L8 10.5 3.5 13.5 5 8.5 1 5h5z"/></svg>
           Trusted by Homeowners Across the GTA
         </div>
+
         <h1>Professional Window Cleaning <span class="highlight">You Can Trust</span></h1>
-       <p class="hero-sub">Professional residential window cleaning in Thornhill, Vaughan, Richmond Hill, Markham, Aurora, and Brampton. Interior, exterior, and screen cleaning with streak-free, spotless results every time.</p>
+        <p class="hero-sub">Professional residential window cleaning in Thornhill, Vaughan, Richmond Hill, Markham, Aurora, and Brampton. Interior, exterior, and screen cleaning with streak-free, spotless results every time.</p>
+
         <div class="hero-buttons">
           <a href="#quote" class="btn-primary">
             Get a Free Quote
@@ -1503,6 +1355,7 @@
           </a>
           <a href="#services" class="btn-secondary">Our Services</a>
         </div>
+
         <div class="hero-stats">
           <div>
             <div class="hero-stat-value">500+</div>
@@ -1518,12 +1371,13 @@
           </div>
         </div>
       </div>
+
       <div class="hero-visual">
         <div class="hero-photo-stack">
           <img class="hero-photo-main" src="photo3.jpg" alt="Professional window cleaning in a modern home" />
           <video class="hero-photo-float" autoplay muted loop playsinline>
-  <source src="photo12.mp4" type="video/mp4" />
-</video>
+            <source src="photo12.mp4" type="video/mp4" />
+          </video>
           <div class="hero-slogan-card">
             <div class="slogan-text">Reflection of Perfection</div>
             <div class="slogan-sub">LS Window Cleaning</div>
@@ -1533,7 +1387,6 @@
     </div>
   </section>
 
-  <!-- TRUST BAR -->
   <div class="trust-bar">
     <div class="trust-inner">
       <div class="trust-item"><span class="trust-check">&#10003;</span> Streak-Free Guarantee</div>
@@ -1542,12 +1395,11 @@
       <div class="trust-item"><span class="trust-check">&#10003;</span> Eco-Friendly Products</div>
     </div>
   </div>
-  
-      <div class="promo-top-banner">
+
+  <div class="promo-top-banner">
     Spring Special: Get $50 off the Full Home Package with code <strong>SPRING26</strong>
   </div>
 
-  <!-- SERVICES -->
   <section class="section section-light" id="services">
     <div class="section-inner">
       <div class="section-header fade-up">
@@ -1555,6 +1407,7 @@
         <h2 class="section-title">Our Services</h2>
         <p class="section-desc">From single windows to full-home packages, we deliver spotless results with attention to every detail.</p>
       </div>
+
       <div class="services-grid">
         <div class="service-card fade-up">
           <div class="service-card-bg" style="background-image: url('photo1.jpg')"></div>
@@ -1564,6 +1417,7 @@
             <p>Crystal-clear interior windows without the mess. We protect your floors, sills, and furnishings while making every pane sparkle.</p>
           </div>
         </div>
+
         <div class="service-card fade-up">
           <div class="service-card-bg" style="background-image: url('photo10.jpg')"></div>
           <div class="service-card-overlay"></div>
@@ -1572,6 +1426,7 @@
             <p>Remove built-up grime, water spots, and debris from the outside. We handle all heights safely and leave your home looking brand new.</p>
           </div>
         </div>
+
         <div class="service-card fade-up">
           <div class="service-card-bg" style="background-image: url('photo6.jpg')"></div>
           <div class="service-card-overlay"></div>
@@ -1580,6 +1435,7 @@
             <p>Dirty screens block light and airflow. We carefully remove, clean, and reinstall every screen so your windows breathe and shine.</p>
           </div>
         </div>
+
         <div class="service-card fade-up">
           <div class="service-card-bg" style="background-image: url('photo7.jpg')"></div>
           <div class="service-card-overlay"></div>
@@ -1592,7 +1448,6 @@
     </div>
   </section>
 
-  <!-- PHOTO GALLERY STRIP -->
   <div class="gallery-strip">
     <img src="photo2.jpg" alt="Window cleaning with spray bottle" loading="lazy" />
     <img src="photo5.jpg" alt="Professional window squeegee work" loading="lazy" />
@@ -1600,7 +1455,6 @@
     <img src="photo9.jpg" alt="Clean window with garden view" loading="lazy" />
   </div>
 
-  <!-- WHY US -->
   <section class="section section-dark" id="why-us">
     <div class="section-inner">
       <div class="section-header fade-up">
@@ -1608,32 +1462,38 @@
         <h2 class="section-title">The LS Difference</h2>
         <p class="section-desc">We are not just window cleaners. We are detail-obsessed professionals who treat your home like our own.</p>
       </div>
+
       <div class="why-grid">
         <div class="why-card fade-up">
           <div class="why-icon">&#128171;</div>
           <h3>Meticulous Attention to Detail</h3>
           <p>Every corner, edge, and frame is inspected. We do not cut corners, and it shows in the results.</p>
         </div>
+
         <div class="why-card fade-up">
           <div class="why-icon">&#128176;</div>
           <h3>Transparent, Fair Pricing</h3>
           <p>No hidden fees, no surprise charges. You get a clear quote upfront and that is exactly what you pay.</p>
         </div>
+
         <div class="why-card fade-up">
           <div class="why-icon">&#9200;</div>
           <h3>Reliable and Punctual</h3>
           <p>We show up on time, every time. Your schedule matters to us and we respect it completely.</p>
         </div>
+
         <div class="why-card fade-up">
           <div class="why-icon">&#127793;</div>
           <h3>Eco-Friendly Solutions</h3>
           <p>Safe for your family, pets, and the environment. We use professional-grade, non-toxic cleaning products.</p>
         </div>
+
         <div class="why-card fade-up">
           <div class="why-icon">&#128170;</div>
           <h3>Experienced Professionals</h3>
           <p>Trained, insured, and experienced. Our team knows how to handle every type of window and every type of home.</p>
         </div>
+
         <div class="why-card fade-up">
           <div class="why-icon">&#129309;</div>
           <h3>99.9% Satisfaction Guarantee</h3>
@@ -1643,7 +1503,6 @@
     </div>
   </section>
 
-  <!-- PROCESS -->
   <section class="section section-light">
     <div class="section-inner">
       <div class="section-header fade-up">
@@ -1651,22 +1510,26 @@
         <h2 class="section-title">Simple as 1-2-3-4</h2>
         <p class="section-desc">Getting sparkling clean windows has never been easier.</p>
       </div>
+
       <div class="process-steps">
         <div class="process-step fade-up">
           <div class="process-num">1</div>
           <h3>Request a Quote</h3>
           <p>Fill out our quick form with your details. It takes less than 2 minutes.</p>
         </div>
+
         <div class="process-step fade-up">
           <div class="process-num">2</div>
           <h3>Get Your Price</h3>
           <p>We review your request and send a clear, no-obligation quote.</p>
         </div>
+
         <div class="process-step fade-up">
           <div class="process-num">3</div>
           <h3>We Clean</h3>
           <p>Our team arrives on schedule and delivers a spotless, streak-free clean.</p>
         </div>
+
         <div class="process-step fade-up">
           <div class="process-num">4</div>
           <h3>Enjoy the View</h3>
@@ -1676,7 +1539,6 @@
     </div>
   </section>
 
-  <!-- AREAS -->
   <section class="section areas-section section-alt" id="areas">
     <div class="areas-bg"></div>
     <div class="section-inner">
@@ -1685,74 +1547,22 @@
         <h2 class="section-title">Areas We Serve</h2>
         <p class="section-desc">Proudly serving homeowners across the Greater Toronto Area's northern communities.</p>
       </div>
+
       <div class="areas-grid">
-        <div class="area-card fade-up">
-          <div class="area-pin">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div><h3>Thornhill</h3><p>Full service coverage</p></div>
-        </div>
-        <div class="area-card fade-up">
-          <div class="area-pin">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div><h3>Thornhill Woods</h3><p>Full service coverage</p></div>
-        </div>
-        <div class="area-card fade-up">
-          <div class="area-pin">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div><h3>North York</h3><p>Full service coverage</p></div>
-        </div>
-        <div class="area-card fade-up">
-          <div class="area-pin">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div><h3>Richmond Hill</h3><p>Full service coverage</p></div>
-        </div>
-        <div class="area-card fade-up">
-          <div class="area-pin">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div><h3>Newmarket</h3><p>Full service coverage</p></div>
-        </div>
-        <div class="area-card fade-up">
-          <div class="area-pin">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div><h3>Maple</h3><p>Full service coverage</p></div>
-        </div>
-        <div class="area-card fade-up">
-          <div class="area-pin">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-          </div>
-          <div><h3>Vaughan</h3><p>Full service coverage</p></div>
-        </div>
-        <div class="area-card fade-up">
-  <div class="area-pin">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-  </div>
-  <div><h3>Aurora</h3><p>Full service coverage</p></div>
-</div>
-
-<div class="area-card fade-up">
-  <div class="area-pin">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-  </div>
-  <div><h3>Markham</h3><p>Full service coverage</p></div>
-</div>
-
-<div class="area-card fade-up">
-  <div class="area-pin">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-  </div>
-  <div><h3>Brampton</h3><p>Full service coverage</p></div>
-</div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Thornhill</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Thornhill Woods</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>North York</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Richmond Hill</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Newmarket</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Maple</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Vaughan</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Aurora</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Markham</h3><p>Full service coverage</p></div></div>
+        <div class="area-card fade-up"><div class="area-pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div><h3>Brampton</h3><p>Full service coverage</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
   <section class="section section-light" id="reviews">
     <div class="section-inner">
       <div class="section-header fade-up">
@@ -1760,6 +1570,7 @@
         <h2 class="section-title">What Our Clients Say</h2>
         <p class="section-desc">Do not just take our word for it. Here is what homeowners across the GTA have to say.</p>
       </div>
+
       <div class="testimonials-grid">
         <div class="testimonial-card fade-up">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -1767,12 +1578,14 @@
           <div class="testimonial-author">Sarah M.</div>
           <div class="testimonial-loc">Thornhill</div>
         </div>
+
         <div class="testimonial-card fade-up">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>"I have tried other companies before and LS is hands down the best. They are thorough, careful with the screens, and the difference is night and day."</blockquote>
           <div class="testimonial-author">David R.</div>
           <div class="testimonial-loc">Richmond Hill</div>
         </div>
+
         <div class="testimonial-card fade-up">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>"Fast, friendly, and flawless. They did our entire home inside and out in a few hours. The sunlight coming through our clean windows is amazing now."</blockquote>
@@ -1783,10 +1596,10 @@
     </div>
   </section>
 
-  <!-- QUOTE FORM -->
   <section class="section quote-section section-dark" id="quote">
     <div class="quote-bg"></div>
     <div class="quote-overlay"></div>
+
     <div class="section-inner">
       <div class="quote-grid">
         <div class="quote-info fade-up">
@@ -1800,6 +1613,7 @@
             <li><span class="check">&#10003;</span> Flexible scheduling around your availability</li>
           </ul>
         </div>
+
         <div class="quote-form-card fade-up">
           <form id="quoteForm" onsubmit="handleSubmit(event)">
             <div class="form-row">
@@ -1812,6 +1626,7 @@
                 <input type="tel" id="phone" name="phone" placeholder="(416) 555-0123" required />
               </div>
             </div>
+
             <div class="form-row">
               <div class="form-group">
                 <label for="email">Email Address</label>
@@ -1834,79 +1649,79 @@
                 </select>
               </div>
             </div>
+
             <div class="form-group">
               <label for="address">Property Address</label>
               <input type="text" id="address" name="address" placeholder="123 Main Street" required />
             </div>
-         <div class="form-row">
-  <div class="form-group">
-    <label for="storeys">Number of Storeys</label>
-    <select id="storeys" name="storeys" required>
-      <option value="" disabled selected>Select</option>
-      <option value="1">1 Storey</option>
-      <option value="2">2 Storeys</option>
-      <option value="3+">3+ Storeys</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="windows">Approx. Number of Windows</label>
-    <input type="number" id="windows" name="windows" placeholder="e.g. 15" min="1" required />
-  </div>
-</div>
 
-<div class="form-group">
-  <label for="promoCode">Promo Code</label>
-  <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code" />
-</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="storeys">Number of Storeys</label>
+                <select id="storeys" name="storeys" required>
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1 Storey</option>
+                  <option value="2">2 Storeys</option>
+                  <option value="3+">3+ Storeys</option>
+                </select>
+              </div>
 
-<div class="form-group">
-  <label for="notes">Additional Notes</label>
-  <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
-</div>
+              <div class="form-group">
+                <label for="windows">Approx. Number of Windows</label>
+                <input type="number" id="windows" name="windows" placeholder="e.g. 15" min="1" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="promoCode">Promo Code</label>
+              <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code" />
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
+            </div>
+
             <button type="submit" class="form-submit">Request My Free Quote</button>
-
-
-<p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
-            
+            <p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-    <section class="section section-light" id="faq">
-  <div class="section-inner">
-    <div class="section-header fade-up">
-      <div class="section-label">Questions</div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-desc">Answers to common questions about our residential window cleaning services.</p>
+  <section class="section section-light" id="faq">
+    <div class="section-inner">
+      <div class="section-header fade-up">
+        <div class="section-label">Questions</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Answers to common questions about our residential window cleaning services.</p>
+      </div>
+
+      <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 1rem;">
+        <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How much does window cleaning cost in Markham?</h3>
+          <p style="color: #6b7280;">Pricing depends on the number of windows, the number of storeys, and the services you select. Use our quote form to get an instant estimate for your home.</p>
+        </div>
+
+        <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you clean interior and exterior windows?</h3>
+          <p style="color: #6b7280;">Yes. We offer interior window cleaning, exterior window cleaning, screen cleaning, and full home window packages.</p>
+        </div>
+
+        <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you serve Aurora and Brampton?</h3>
+          <p style="color: #6b7280;">Yes. We proudly serve Aurora, Brampton, Thornhill, Vaughan, Markham, Richmond Hill, and nearby areas.</p>
+        </div>
+
+        <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How often should home windows be cleaned?</h3>
+          <p style="color: #6b7280;">Many homeowners book professional window cleaning seasonally or two to four times per year, depending on the home, weather, and surrounding trees or dust.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 1rem;">
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How much does window cleaning cost in Markham?</h3>
-        <p style="color: #6b7280;">Pricing depends on the number of windows, the number of storeys, and the services you select. Use our quote form to get an instant estimate for your home.</p>
-      </div>
-
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you clean interior and exterior windows?</h3>
-        <p style="color: #6b7280;">Yes. We offer interior window cleaning, exterior window cleaning, screen cleaning, and full home window packages.</p>
-      </div>
-
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Do you serve Aurora and Brampton?</h3>
-        <p style="color: #6b7280;">Yes. We proudly serve Aurora, Brampton, Thornhill, Vaughan, Markham, Richmond Hill, and nearby areas.</p>
-      </div>
-
-      <div class="fade-up" style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">How often should home windows be cleaned?</h3>
-        <p style="color: #6b7280;">Many homeowners book professional window cleaning seasonally or two to four times per year, depending on the home, weather, and surrounding trees or dust.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- CTA BANNER -->
   <div class="cta-banner">
     <h2>Ready for Spotless Windows?</h2>
     <p>Join hundreds of happy homeowners. Get your free quote in under 2 minutes.</p>
@@ -1916,7 +1731,6 @@
     </a>
   </div>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-top">
@@ -1928,6 +1742,7 @@
           <p class="footer-desc">Professional residential window cleaning serving the Greater Toronto Area. Streak-free results, every time.</p>
           <p class="footer-desc" style="margin-top: 1rem; font-style: italic; color: rgba(255,255,255,0.25);">"Reflection of Perfection."</p>
         </div>
+
         <div class="footer-col">
           <h4>Services</h4>
           <a href="#services">Interior Cleaning</a>
@@ -1935,22 +1750,25 @@
           <a href="#services">Screen Cleaning</a>
           <a href="#services">Full Home Packages</a>
         </div>
-       <div class="footer-col">
-  <h4>Service Areas</h4>
-  <a href="#areas">Thornhill</a>
-  <a href="#areas">Vaughan</a>
-  <a href="#areas">Markham</a>
-  <a href="#areas">Richmond Hill</a>
-  <a href="#areas">Aurora</a>
-  <a href="#areas">Brampton</a>
-</div>
+
         <div class="footer-col">
-  <h4>Contact</h4>
-  <a href="tel:14169397024">(416) 939-7024</a>
-  <a href="mailto:lswindowcleaninginquiries@gmail.com">lswindowcleaninginquiries@gmail.com</a>
-  <a href="#quote">Request a Quote</a>
-</div>
+          <h4>Service Areas</h4>
+          <a href="#areas">Thornhill</a>
+          <a href="#areas">Vaughan</a>
+          <a href="#areas">Markham</a>
+          <a href="#areas">Richmond Hill</a>
+          <a href="#areas">Aurora</a>
+          <a href="#areas">Brampton</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:14169397024">(416) 939-7024</a>
+          <a href="mailto:lswindowcleaninginquiries@gmail.com">lswindowcleaninginquiries@gmail.com</a>
+          <a href="#quote">Request a Quote</a>
+        </div>
       </div>
+
       <div class="footer-bottom">
         <span>&copy; 2026 LS Window Cleaning. All rights reserved.</span>
         <span>Serving the GTA with pride.</span>
@@ -1958,193 +1776,204 @@
     </div>
   </footer>
 
-  <script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  });
+  <div class="quote-popup" id="quotePopup">
+    <div class="quote-popup-card">
+      <button class="quote-popup-close" onclick="closeQuotePopup()" aria-label="Close quote popup">&times;</button>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
+      <h3>Your Instant Quote</h3>
+      <p class="quote-popup-sub">Choose the option you want and book right away.</p>
+
+      <div class="quote-popup-grid">
+        <div class="quote-option">
+          <h4>Just Interior</h4>
+          <div class="quote-option-price" id="priceInterior">$0.00</div>
+          <p>Interior glass cleaning only.</p>
+          <a id="bookInterior" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Interior</a>
+        </div>
+
+        <div class="quote-option">
+          <h4>Just Exterior</h4>
+          <div class="quote-option-price" id="priceExterior">$0.00</div>
+          <p>Exterior glass cleaning only.</p>
+          <a id="bookExterior" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Exterior</a>
+        </div>
+
+        <div class="quote-option">
+          <h4>Just Screens</h4>
+          <div class="quote-option-price" id="priceScreens">$0.00</div>
+          <p>Screen removal, cleaning, and reinstall.</p>
+          <a id="bookScreens" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Screens</a>
+        </div>
+
+        <div class="quote-option">
+          <h4>Interior + Exterior Only</h4>
+          <div class="quote-option-price" id="priceWindows">$0.00</div>
+          <p>Interior and exterior window cleaning with a bundled discount.</p>
+          <a id="bookWindows" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Interior + Exterior</a>
+        </div>
+
+        <div class="quote-option" style="grid-column: 1 / -1;">
+          <h4>Full Package</h4>
+          <div class="quote-option-old-price" id="priceFullOld">$0.00</div>
+          <div class="quote-option-price" id="priceFull">$0.00</div>
+          <p>Interior, exterior, and screens included with the biggest bundled discount.</p>
+          <a id="bookFull" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Full Package</a>
+        </div>
+      </div>
+
+      <p class="quote-popup-note">
+        These are estimated prices. Final pricing may vary depending on window size, access, and condition.
+      </p>
+    </div>
+  </div>
+
+  <div class="promo-popup" id="promoPopup">
+    <div class="promo-popup-card">
+      <button class="promo-popup-close" onclick="closePromoPopup()" aria-label="Close promo popup">&times;</button>
+      <div class="promo-popup-badge">Limited Time Offer</div>
+      <h3>$50 Off Full Home Package</h3>
+      <p>Book your full home package and use promo code <strong>SPRING26</strong> in the quote form to get $50 off.</p>
+      <div class="promo-code-pill">SPRING26</div>
+      <a href="#quote" class="promo-popup-btn" onclick="closePromoPopup()">Get My Free Quote</a>
+    </div>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    function closeQuotePopup() {
+      document.getElementById('quotePopup').classList.remove('open');
+    }
+
+    function closePromoPopup() {
+      document.getElementById('promoPopup').classList.remove('open');
+    }
+
+    window.addEventListener('load', function () {
+      const promoPopup = document.getElementById('promoPopup');
+      if (promoPopup) {
+        setTimeout(() => {
+          promoPopup.classList.add('open');
+        }, 600);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  function closeQuotePopup() {
-    document.getElementById('quotePopup').classList.remove('open');
-  }
-   function closePromoPopup() {
-  document.getElementById('promoPopup').classList.remove('open');
-}
-
-window.addEventListener('load', function () {
-  const promoPopup = document.getElementById('promoPopup');
-  if (promoPopup) {
-    promoPopup.classList.add('open');
-  }
-});
-function makePriceLookBetter(value) {
-  return Math.ceil(value) + 0.99;
-}
-function buildCalendlyLink(serviceName, estimatedPrice, data) {
-  const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
-
-  const fullAddress = `${data.get('address') || ''}, ${data.get('city') || ''}`;
-
-  const params = new URLSearchParams({
-    name: data.get('fullName') || '',
-    email: data.get('email') || '',
-    a1: fullAddress,
-    a2: data.get('phone') || '',
-    a3: data.get('storeys') || '',
-    a4: data.get('windows') || '',
-    a5: data.get('notes') || 'N/A',
-    a6: serviceName,
-    a7: estimatedPrice
-  });
-
-  return `${base}?${params.toString()}`;
-}
-
- function handleSubmit(e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const data = new FormData(form);
-
-  const windows = parseInt(data.get('windows'), 10) || 0;
-  const storeys = data.get('storeys');
-  const promoCode = (data.get('promoCode') || '').trim().toUpperCase();
-
-  const baseFee = 100;
-  const perWindow = 4.5;
-  const extraThreeStorey = storeys === "3+" ? 100 : 0;
-
-  const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-  const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-  const justScreensRaw = windows * 4;
-  const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
-  const fullPackageRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
-
-  const justInterior = makePriceLookBetter(justInteriorRaw);
-  const justExterior = makePriceLookBetter(justExteriorRaw);
-  const justScreens = makePriceLookBetter(justScreensRaw);
-  const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
-
-  const fullPackageOriginal = makePriceLookBetter(fullPackageRaw);
-  const promoApplied = promoCode === "SPRING26";
-  const fullPackageDiscounted = promoApplied
-    ? fullPackageOriginal - 50
-    : fullPackageOriginal;
-
-  document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
-  document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
-  document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
-  document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
-  document.getElementById('priceFull').textContent = `$${fullPackageDiscounted.toFixed(2)}`;
-
-  const oldPriceEl = document.getElementById('priceFullOld');
-
-  if (promoApplied) {
-    oldPriceEl.textContent = `$${fullPackageOriginal.toFixed(2)}`;
-    oldPriceEl.classList.add('show');
-  } else {
-    oldPriceEl.textContent = '';
-    oldPriceEl.classList.remove('show');
-  }
-
-  document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
-  document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
-  document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
-  document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
-  document.getElementById('bookFull').href = buildCalendlyLink(
-    promoApplied ? 'Full Package (SPRING26 Applied)' : 'Full Package',
-    `$${fullPackageDiscounted.toFixed(2)}`,
-    data
-  );
-
-  document.getElementById('quotePopup').classList.add('open');
-}
-  window.addEventListener('click', function (e) {
-    const popup = document.getElementById('quotePopup');
-    if (e.target === popup) {
-      closeQuotePopup();
+    function makePriceLookBetter(value) {
+      return Math.ceil(value) + 0.99;
     }
-  });
-</script>
 
-<div class="quote-popup" id="quotePopup">
-  <div class="quote-popup-card">
-    <button class="quote-popup-close" onclick="closeQuotePopup()" aria-label="Close quote popup">&times;</button>
+    function buildCalendlyLink(serviceName, estimatedPrice, data) {
+      const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
+      const fullAddress = `${data.get('address') || ''}, ${data.get('city') || ''}`;
 
-    <h3>Your Instant Quote</h3>
-    <p class="quote-popup-sub">Choose the option you want and book right away.</p>
+      const params = new URLSearchParams({
+        name: data.get('fullName') || '',
+        email: data.get('email') || '',
+        a1: fullAddress,
+        a2: data.get('phone') || '',
+        a3: data.get('storeys') || '',
+        a4: data.get('windows') || '',
+        a5: data.get('notes') || 'N/A',
+        a6: serviceName,
+        a7: estimatedPrice
+      });
 
-    <div class="quote-popup-grid">
-      <div class="quote-option">
-        <h4>Just Interior</h4>
-        <div class="quote-option-price" id="priceInterior">$0</div>
-        <p>Interior glass cleaning only.</p>
-        <a id="bookInterior" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Interior</a>
-      </div>
+      return `${base}?${params.toString()}`;
+    }
 
-      <div class="quote-option">
-        <h4>Just Exterior</h4>
-        <div class="quote-option-price" id="priceExterior">$0</div>
-        <p>Exterior glass cleaning only.</p>
-        <a id="bookExterior" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Exterior</a>
-      </div>
+    function handleSubmit(e) {
+      e.preventDefault();
 
-      <div class="quote-option">
-        <h4>Just Screens</h4>
-        <div class="quote-option-price" id="priceScreens">$0</div>
-        <p>Screen removal, cleaning, and reinstall.</p>
-        <a id="bookScreens" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Screens</a>
-      </div>
+      const form = e.target;
+      const data = new FormData(form);
 
-      <div class="quote-option">
-        <h4>Interior + Exterior Only</h4>
-        <div class="quote-option-price" id="priceWindows">$0</div>
-        <p>Interior and exterior window cleaning with a bundled discount.</p>
-        <a id="bookWindows" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Interior + Exterior</a>
-      </div>
+      const windows = parseInt(data.get('windows'), 10) || 0;
+      const storeys = data.get('storeys');
+      const promoCode = (data.get('promoCode') || '').trim().toUpperCase();
 
-      <div class="quote-option" style="grid-column: 1 / -1;">
-  <h4>Full Package</h4>
-  <div class="quote-option-old-price" id="priceFullOld">$0.00</div>
-  <div class="quote-option-price" id="priceFull">$0.00</div>
-  <p>Interior, exterior, and screens included with the biggest bundled discount.</p>
-  <a id="bookFull" href="#" target="_blank" rel="noopener noreferrer" class="quote-book-btn">Book Full Package</a>
-</div>
+      const baseFee = 100;
+      const perWindow = 4.5;
+      const extraThreeStorey = storeys === "3+" ? 100 : 0;
 
-    <p class="quote-popup-note">
-      These are estimated prices. Final pricing may vary depending on window size, access, and condition.
-    </p>
-  </div>
-</div>
-  
+      const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+      const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+      const justScreensRaw = windows * 4;
+      const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
 
-<div class="promo-popup" id="promoPopup">
-  <div class="promo-popup-card">
-    <button class="promo-popup-close" onclick="closePromoPopup()" aria-label="Close promo popup">&times;</button>
+      const fullPackageBaseRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
+      const promoApplied = promoCode === "SPRING26";
+      const fullPackageDiscountedRaw = promoApplied ? fullPackageBaseRaw - 50 : fullPackageBaseRaw;
 
-    <div class="promo-popup-badge">Limited Time Offer</div>
-    <h3>Get $50 Off</h3>
-    <p>
-      Get <strong>$50 off</strong> when you book the <strong>Full Home Package</strong>.
-      Enter promo code <strong>SPRING26</strong> in the quote form.
-    </p>
+      const justInterior = makePriceLookBetter(justInteriorRaw);
+      const justExterior = makePriceLookBetter(justExteriorRaw);
+      const justScreens = makePriceLookBetter(justScreensRaw);
+      const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
+      const fullPackageOriginal = makePriceLookBetter(fullPackageBaseRaw);
+      const fullPackageDiscounted = makePriceLookBetter(fullPackageDiscountedRaw);
 
-    <div class="promo-code-pill">SPRING26</div>
+      document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
+      document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
+      document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
+      document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
+      document.getElementById('priceFull').textContent = `$${fullPackageDiscounted.toFixed(2)}`;
 
-    <a href="#quote" class="promo-popup-btn" onclick="closePromoPopup()">Get My Quote</a>
-  </div>
-</div>
+      const oldPriceEl = document.getElementById('priceFullOld');
 
+      if (promoApplied) {
+        oldPriceEl.textContent = `$${fullPackageOriginal.toFixed(2)}`;
+        oldPriceEl.classList.add('show');
+      } else {
+        oldPriceEl.textContent = '';
+        oldPriceEl.classList.remove('show');
+      }
+
+      document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
+      document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
+      document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
+      document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
+      document.getElementById('bookFull').href = buildCalendlyLink(
+        promoApplied ? 'Full Package (SPRING26 Applied)' : 'Full Package',
+        `$${fullPackageDiscounted.toFixed(2)}`,
+        data
+      );
+
+      document.getElementById('quotePopup').classList.add('open');
+    }
+
+    window.addEventListener('click', function (e) {
+      const quotePopup = document.getElementById('quotePopup');
+      const promoPopup = document.getElementById('promoPopup');
+
+      if (e.target === quotePopup) {
+        closeQuotePopup();
+      }
+
+      if (e.target === promoPopup) {
+        closePromoPopup();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeQuotePopup();
+        closePromoPopup();
+      }
+    });
+  </script>
 </body>
 </html>
