@@ -1898,84 +1898,106 @@
       return `${base}?${params.toString()}`;
     }
 
-    function handleSubmit(e) {
-      e.preventDefault();
 
-      const form = e.target;
-      const data = new FormData(form);
+  function handleSubmit(e) {
+    e.preventDefault();
 
-      const windows = parseInt(data.get('windows'), 10) || 0;
-      const storeys = data.get('storeys');
-      const promoCode = (data.get('promoCode') || '').trim().toUpperCase();
+    const form = e.target;
+    const data = new FormData(form);
 
-      const baseFee = 100;
-      const perWindow = 4.5;
-      const extraThreeStorey = storeys === "3+" ? 100 : 0;
+    const windows = parseInt(data.get('windows'), 10) || 0;
+    const storeys = data.get('storeys');
+    const promoCode = (data.get('promoCode') || '').trim().toUpperCase();
 
-      const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-      const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-      const justScreensRaw = windows * 4;
-      const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
+    const baseFee = 100;
+    const perWindow = 4.5;
+    const extraThreeStorey = storeys === "3+" ? 100 : 0;
 
-      const fullPackageBaseRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
-      const promoApplied = promoCode === "SPRING26";
-      const fullPackageDiscountedRaw = promoApplied ? fullPackageBaseRaw - 50 : fullPackageBaseRaw;
+    const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+    const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+    const justScreensRaw = windows * 4;
+    const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
 
-      const justInterior = makePriceLookBetter(justInteriorRaw);
-      const justExterior = makePriceLookBetter(justExteriorRaw);
-      const justScreens = makePriceLookBetter(justScreensRaw);
-      const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
-      const fullPackageOriginal = makePriceLookBetter(fullPackageBaseRaw);
-      const fullPackageDiscounted = makePriceLookBetter(fullPackageDiscountedRaw);
+    const fullPackageBaseRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
+    const promoApplied = promoCode === "SPRING26";
+    const fullPackageDiscountedRaw = promoApplied ? fullPackageBaseRaw - 50 : fullPackageBaseRaw;
 
-      document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
-      document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
-      document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
-      document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
-      document.getElementById('priceFull').textContent = `$${fullPackageDiscounted.toFixed(2)}`;
+    const justInterior = makePriceLookBetter(justInteriorRaw);
+    const justExterior = makePriceLookBetter(justExteriorRaw);
+    const justScreens = makePriceLookBetter(justScreensRaw);
+    const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
+    const fullPackageOriginal = makePriceLookBetter(fullPackageBaseRaw);
+    const fullPackageDiscounted = makePriceLookBetter(fullPackageDiscountedRaw);
 
-      const oldPriceEl = document.getElementById('priceFullOld');
+    document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
+    document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
+    document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
+    document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
+    document.getElementById('priceFull').textContent = `$${fullPackageDiscounted.toFixed(2)}`;
 
-      if (promoApplied) {
-        oldPriceEl.textContent = `$${fullPackageOriginal.toFixed(2)}`;
-        oldPriceEl.classList.add('show');
-      } else {
-        oldPriceEl.textContent = '';
-        oldPriceEl.classList.remove('show');
-      }
+    const oldPriceEl = document.getElementById('priceFullOld');
 
-      document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
-      document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
-      document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
-      document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
-      document.getElementById('bookFull').href = buildCalendlyLink(
-        promoApplied ? 'Full Package (SPRING26 Applied)' : 'Full Package',
-        `$${fullPackageDiscounted.toFixed(2)}`,
-        data
-      );
-
-      document.getElementById('quotePopup').classList.add('open');
+    if (promoApplied) {
+      oldPriceEl.textContent = `$${fullPackageOriginal.toFixed(2)}`;
+      oldPriceEl.classList.add('show');
+    } else {
+      oldPriceEl.textContent = '';
+      oldPriceEl.classList.remove('show');
     }
 
-    window.addEventListener('click', function (e) {
-      const quotePopup = document.getElementById('quotePopup');
-      const promoPopup = document.getElementById('promoPopup');
+    document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
+    document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
+    document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
+    document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
+    document.getElementById('bookFull').href = buildCalendlyLink(
+      promoApplied ? 'Full Package (SPRING26 Applied)' : 'Full Package',
+      `$${fullPackageDiscounted.toFixed(2)}`,
+      data
+    );
 
-      if (e.target === quotePopup) {
-        closeQuotePopup();
-      }
+    document.getElementById('quotePopup').classList.add('open');
+  }
 
-      if (e.target === promoPopup) {
-        closePromoPopup();
+  window.addEventListener('click', function (e) {
+    const quotePopup = document.getElementById('quotePopup');
+    const promoPopup = document.getElementById('promoPopup');
+
+    if (e.target === quotePopup) {
+      closeQuotePopup();
+    }
+
+    if (e.target === promoPopup) {
+      closePromoPopup();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeQuotePopup();
+      closePromoPopup();
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+
+      video.load();
+
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Video autoplay blocked:", error);
+        });
       }
     });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeQuotePopup();
-        closePromoPopup();
-      }
-    });
-  </script>
+  });
+</script>
 </body>
 </html>
