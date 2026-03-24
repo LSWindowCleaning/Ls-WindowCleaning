@@ -517,6 +517,7 @@
     }
 
     .service-card:hover { transform: translateY(-4px); }
+
     .service-card-bg {
       position: absolute;
       inset: 0;
@@ -1073,190 +1074,204 @@
       transform: translateY(0);
     }
 
-   .quote-popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.55);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 3000;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.quote-popup.open {
-  display: flex;
-}
-    .quote-popup-card {
-  position: relative;
-  background: #ffffff;
-  width: min(760px, 100%);
-  max-height: 88vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: 22px;
-  padding: 28px 20px 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-}
-
-
-.quote-popup-close {
-  position: sticky;
-  top: 0;
-  margin-left: auto;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 999px;
-  background: #f1f5f9;
-  color: #0f172a;
-  font-size: 24px;
-  font-weight: 700;
-  cursor: pointer;
-  z-index: 5;
-}
-
-.quote-popup h3 {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.quote-popup-sub {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.quote-popup-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: stretch;
-}
-
-.quote-option {
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  padding: 1.25rem;
-  background: #f9fafb;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
-.quote-option h4 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.45rem;
-  line-height: 1.2;
-}
-
-.quote-option-price {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #2563eb;
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-.quote-option-old-price {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #9ca3af;
-  text-decoration: line-through;
-  margin-bottom: 0.35rem;
-  display: none;
-}
-
-.quote-option-old-price.show {
-  display: block;
-}
-
-.quote-option p {
-  font-size: 0.95rem;
-  color: #6b7280;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.quote-book-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: auto;
-  background: #2563eb;
-  color: white;
-  text-decoration: none;
-  padding: 0.95rem 1rem;
-  border-radius: 14px;
-  font-weight: 700;
-  width: 100%;
-  text-align: center;
-}
+    .quote-popup,
+    .promo-popup {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-.quote-popup-note {
-  margin-top: 1.25rem;
-  font-size: 0.9rem;
-  color: #6b7280;
-  text-align: center;
-}
+    .quote-popup {
+      background: rgba(15, 23, 42, 0.55);
+      padding: 20px;
+      z-index: 3000;
+    }
 
-@media (max-width: 768px) {
-  .quote-popup {
-    align-items: flex-start;
-    justify-content: center;
-    padding: 88px 12px 20px;
-  }
+    .promo-popup {
+      background: rgba(10, 10, 10, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      z-index: 7000;
+    }
 
-  .quote-popup-card {
-    width: 100%;
-    max-height: calc(100vh - 108px);
-    padding: 18px 14px 20px;
-    border-radius: 18px;
-  }
+    .quote-popup.open,
+    .promo-popup.open {
+      display: flex;
+    }
 
-  .quote-popup-grid {
-    grid-template-columns: 1fr;
-    gap: 0.9rem;
-  }
+    .quote-popup-card,
+    .promo-popup-card {
+      width: 100%;
+      background: #ffffff;
+      position: relative;
+    }
 
-  .quote-option {
-    padding: 1.1rem;
-  }
+    .quote-popup-card {
+      max-width: 760px;
+      max-height: 88vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 22px;
+      padding: 28px 20px 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
 
-  .quote-option h4 {
-    font-size: 1.4rem;
-    margin-bottom: 0.4rem;
-  }
+    .promo-popup-card {
+      max-width: 520px;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
 
-  .quote-option-price {
-    font-size: 2.25rem;
-    margin-bottom: 0.6rem;
-  }
+    .quote-popup-close,
+    .promo-popup-close {
+      background: #f3f4f6;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
 
-  .quote-option p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
+    .quote-popup-close {
+      position: sticky;
+      top: 0;
+      margin-left: auto;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
 
-  .quote-book-btn {
-    padding: 1rem;
-    font-size: 1rem;
-    border-radius: 14px;
-  }
+    .promo-popup-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
 
+    .quote-popup h3,
+    .promo-popup h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #111827;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .quote-popup h3 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .promo-popup h3 {
+      font-size: 1.8rem;
+    }
+
+    .quote-popup-sub,
+    .promo-popup p {
+      color: #6b7280;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .quote-popup-sub {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .promo-popup p {
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-popup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .quote-option {
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 1.25rem;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .quote-option h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.45rem;
+      line-height: 1.2;
+    }
+
+    .quote-option-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .quote-option-old-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #9ca3af;
+      text-decoration: line-through;
+      margin-bottom: 0.35rem;
+      display: none;
+    }
+
+    .quote-option-old-price.show {
+      display: block;
+    }
+
+    .quote-option p {
+      font-size: 0.95rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .quote-book-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      background: #2563eb;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.95rem 1rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      width: 100%;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .quote-book-btn:hover {
+      background: #1d4ed8;
+    }
 
     .quote-popup-note {
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
       font-size: 0.9rem;
       color: #6b7280;
+      text-align: center;
     }
 
     .promo-popup-badge {
@@ -1333,7 +1348,50 @@
       .services-grid { grid-template-columns: 1fr; }
       .gallery-strip { grid-template-columns: 1fr 1fr; }
       .gallery-strip img { height: 200px; }
-      .      .quote-popup-grid { grid-template-columns: 1fr; }
+
+      .quote-popup {
+        align-items: flex-start;
+        justify-content: center;
+        padding: 88px 12px 20px;
+      }
+
+      .quote-popup-card {
+        width: 100%;
+        max-height: calc(100vh - 108px);
+        padding: 18px 14px 20px;
+        border-radius: 18px;
+      }
+
+      .quote-popup-grid { 
+        grid-template-columns: 1fr; 
+        gap: 0.9rem;
+      }
+
+      .quote-option {
+        padding: 1.1rem;
+      }
+
+      .quote-option h4 {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .quote-option-price {
+        font-size: 2.25rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .quote-option p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .quote-book-btn {
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 14px;
+      }
+
       .quote-popup h3,
       .promo-popup h3 { font-size: 1.6rem; }
     }
@@ -2030,4 +2088,3 @@
   </script>
 </body>
 </html>
-
