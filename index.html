@@ -55,41 +55,61 @@
     }
 
     .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 1rem 2rem;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-    .nav.scrolled {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-      padding: 0.5rem 2rem;
-    }
+.nav.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 2rem;
+}
 
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--white);
+  transition: color 0.3s;
+}
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      color: var(--white);
-      transition: color 0.3s;
-    }
+.nav.scrolled .nav-logo { color: var(--white); }
 
-    .nav.scrolled .nav-logo { color: var(--black); }
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.nav.scrolled .nav-links a { color: rgba(255, 255, 255, 0.85); }
+.nav-links a:hover { color: var(--blue-400); }
+.nav.scrolled .nav-links a:hover { color: var(--blue-400); }
+
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  margin: 6px 0;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+.nav.scrolled .mobile-toggle span { background: var(--white); }
 
     .nav-logo img {
       height: 44px;
