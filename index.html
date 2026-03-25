@@ -132,7 +132,7 @@
       transition: color 0.3s;
     }
 
-    .nav.scrolled .nav-links a { color: rgba(255, 255, 255, 0.85); }
+    .nav.scrolled .nav-links a { color: #111 !important; }
     .nav-links a:hover { color: var(--blue-400); }
     .nav.scrolled .nav-links a:hover { color: var(--blue-400); }
 
@@ -149,6 +149,11 @@
       background: var(--blue-700) !important;
       transform: translateY(-1px);
     }
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
 
     .mobile-toggle {
       display: none;
@@ -2180,6 +2185,16 @@
       closePromoPopup();
     }
   });
+      window.addEventListener('scroll', function () {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+
+  if (window.scrollY > 20) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiBK6H2aXM8dddngLsHc-VwWt9IBaMop8&libraries=places&callback=initAddressAutocomplete"></script>
 </body>
