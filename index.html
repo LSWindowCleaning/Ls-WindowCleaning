@@ -55,68 +55,41 @@
     }
 
     .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 1rem 2rem;
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-.nav.scrolled {
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  padding: 0.5rem 2rem;
-}
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      padding: 0.5rem 2rem;
+    }
+
     .nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  text-decoration: none;
-  color: var(--white);
-  transition: color 0.3s;
-}
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: color 0.3s;
+    }
 
-.nav.scrolled .nav-logo { color: var(--white); }
-
-.nav-links a {
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.85);
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: color 0.3s;
-}
-
-.nav.scrolled .nav-links a { color: rgba(255, 255, 255, 0.85); }
-.nav-links a:hover { color: var(--blue-400); }
-.nav.scrolled .nav-links a:hover { color: var(--blue-400); }
-
-.mobile-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--white);
-  margin: 6px 0;
-  transition: all 0.3s;
-  border-radius: 2px;
-}
-
-.nav.scrolled .mobile-toggle span { background: var(--white); }
+    .nav.scrolled .nav-logo { color: var(--black); }
 
     .nav-logo img {
       height: 44px;
@@ -145,12 +118,11 @@
     }
 
     .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-  margin-left: auto;
-}
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
 
     .nav-links a {
       text-decoration: none;
@@ -160,9 +132,9 @@
       transition: color 0.3s;
     }
 
-    .nav.scrolled .nav-links a { color: var(--gray-600); }
+    .nav.scrolled .nav-links a { color: rgba(255, 255, 255, 0.85); }
     .nav-links a:hover { color: var(--blue-400); }
-    .nav.scrolled .nav-links a:hover { color: var(--blue-600); }
+    .nav.scrolled .nav-links a:hover { color: var(--blue-400); }
 
     .nav-cta {
       background: var(--blue-600) !important;
@@ -196,7 +168,7 @@
       border-radius: 2px;
     }
 
-    .nav.scrolled .mobile-toggle span { background: var(--black); }
+    .nav.scrolled .mobile-toggle span { background: var(--white); }
 
     .mobile-menu {
       display: none;
@@ -745,7 +717,7 @@
     }
 
     .process-step p {
-      font-size: 0.85rem;
+            font-size: 0.85rem;
       color: var(--gray-500);
       line-height: 1.5;
     }
@@ -1442,7 +1414,7 @@
         <li><a href="#why-us">Why Us</a></li>
         <li><a href="#areas">Areas</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="tel:14169397024">(416) 939-7024</a></li>
+        <li><a href="tel:+14169397024">1-416-939-7024</a></li>
         <li><a href="#quote" class="nav-cta">Get a Free Quote</a></li>
       </ul>
 
@@ -1464,7 +1436,7 @@
   <section class="hero" id="hero">
     <div class="hero-video-wrap">
       <video autoplay muted loop playsinline>
-        <source src="video_landscape1.mp4" type="video/mp4" />
+                <source src="video_landscape1.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -1530,7 +1502,7 @@
   </div>
 
   <div class="promo-top-banner">
-    Spring Special: Get $50 off the Full Home Package with code <strong>SPRING26</strong>
+    Spring Special: Get $75 off the Full Home Package with code <strong>SPRING26</strong>
   </div>
 
   <section class="section section-light" id="services">
@@ -1756,7 +1728,7 @@
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(416) 555-0123" required />
+                <input type="tel" id="phone" name="phone" placeholder="1-647-123-4567" maxlength="14" required />
               </div>
             </div>
 
@@ -1785,7 +1757,7 @@
 
             <div class="form-group">
               <label for="address">Property Address</label>
-              <input type="text" id="address" name="address" placeholder="123 Main Street" required />
+              <input type="text" id="address" name="address" placeholder="Start typing your address" autocomplete="street-address" required />
             </div>
 
             <div class="form-row">
@@ -1964,8 +1936,8 @@
     <div class="promo-popup-card">
       <button class="promo-popup-close" onclick="closePromoPopup()" aria-label="Close promo popup">&times;</button>
       <div class="promo-popup-badge">Limited Time Offer</div>
-      <h3>$50 Off Full Home Package</h3>
-      <p>Book your full home package and use promo code <strong>SPRING26</strong> in the quote form to get $50 off.</p>
+      <h3>$75 Off Full Home Package</h3>
+      <p>Book your full home package and use promo code <strong>SPRING26</strong> in the quote form to get $75 off.</p>
       <div class="promo-code-pill">SPRING26</div>
       <a href="#quote" class="promo-popup-btn" onclick="closePromoPopup()">Get My Free Quote</a>
     </div>
@@ -2007,7 +1979,73 @@
           promoPopup.classList.add('open');
         }, 800);
       }
+
+      initPhoneFormatting();
+      if (window.google && google.maps && google.maps.places) {
+        initAddressAutocomplete();
+      }
     });
+
+    function initPhoneFormatting() {
+      const phoneInput = document.getElementById('phone');
+      if (!phoneInput) return;
+
+      phoneInput.addEventListener('input', function (e) {
+        let numbers = e.target.value.replace(/\D/g, '');
+
+        if (numbers.length === 0) {
+          e.target.value = '';
+          return;
+        }
+
+        if (!numbers.startsWith('1')) {
+          numbers = '1' + numbers;
+        }
+
+        numbers = numbers.slice(0, 11);
+
+        let formatted = numbers.charAt(0);
+        if (numbers.length > 1) formatted += '-' + numbers.slice(1, 4);
+        if (numbers.length > 4) formatted += '-' + numbers.slice(4, 7);
+        if (numbers.length > 7) formatted += '-' + numbers.slice(7, 11);
+
+        e.target.value = formatted;
+      });
+
+      phoneInput.addEventListener('focus', function () {
+        if (!this.value) this.value = '1-';
+      });
+
+      phoneInput.addEventListener('keydown', function (e) {
+        if (this.value === '1-' && (e.key === 'Backspace' || e.key === 'Delete')) {
+          e.preventDefault();
+        }
+      });
+
+      phoneInput.addEventListener('blur', function () {
+        if (this.value === '1-') this.value = '';
+      });
+    }
+
+    let addressAutocomplete;
+
+    function initAddressAutocomplete() {
+      const addressInput = document.getElementById('address');
+      if (!addressInput || !window.google || !google.maps || !google.maps.places) return;
+
+      addressAutocomplete = new google.maps.places.Autocomplete(addressInput, {
+        types: ['address'],
+        componentRestrictions: { country: 'ca' },
+        fields: ['formatted_address', 'address_components', 'geometry']
+      });
+
+      addressAutocomplete.addListener('place_changed', () => {
+        const place = addressAutocomplete.getPlace();
+        if (place && place.formatted_address) {
+          addressInput.value = place.formatted_address;
+        }
+      });
+    }
 
     function makePriceLookBetter(value) {
       return Math.ceil(value) + 0.99;
@@ -2055,7 +2093,7 @@
       const promoApplied = promoCode === "SPRING26";
       const minimumFullPackagePrice = interiorAndExteriorRaw + 20;
     const fullPackageDiscountedRaw = promoApplied
-      ? Math.max(fullPackageBaseRaw - 50, minimumFullPackagePrice)
+      ? Math.max(fullPackageBaseRaw - 75, minimumFullPackagePrice)
       : fullPackageBaseRaw;
 
       const justInterior = makePriceLookBetter(justInteriorRaw);
@@ -2114,5 +2152,6 @@
       }
     });
   </script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiBK6H2aXM8dddngLsHc-VwWt9IBaMop8&libraries=places&callback=initAddressAutocomplete"></script>
 </body>
 </html>
