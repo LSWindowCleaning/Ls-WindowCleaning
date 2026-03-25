@@ -1727,76 +1727,66 @@
         </div>
 
         <div class="quote-form-card fade-up">
-          <form id="quoteForm" onsubmit="handleSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" placeholder="John Smith" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="1-647-123-4567" maxlength="14" required />
-              </div>
-            </div>
+        <form id="quoteForm" onsubmit="handleSubmit(event)">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" placeholder="John Smith" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="1-647-123-4567" maxlength="14" required />
+    </div>
+  </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="john@example.com" required />
-              </div>
-              <div class="form-group">
-                <label for="city">City</label>
-                <select id="city" name="city" required>
-                  <option value="" disabled selected>Select your area</option>
-                  <option value="Thornhill">Thornhill</option>
-                  <option value="Thornhill Woods">Thornhill Woods</option>
-                  <option value="North York">North York</option>
-                  <option value="Richmond Hill">Richmond Hill</option>
-                  <option value="Newmarket">Newmarket</option>
-                  <option value="Maple">Maple</option>
-                  <option value="Vaughan">Vaughan</option>
-                  <option value="Aurora">Aurora</option>
-                  <option value="Markham">Markham</option>
-                  <option value="Brampton">Brampton</option>
-                </select>
-              </div>
-            </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="john@example.com" required />
+    </div>
+    <div class="form-group">
+      <label for="address">Property Address</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        placeholder="Start typing your address"
+        autocomplete="street-address"
+        required
+      />
+    </div>
+  </div>
 
-            <div class="form-group">
-              <label for="address">Property Address</label>
-              <input type="text" id="address" name="address" placeholder="Start typing your address" autocomplete="street-address" required />
-            </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="storeys">Number of Storeys</label>
+      <select id="storeys" name="storeys" required>
+        <option value="" disabled selected>Select</option>
+        <option value="1">1 Storey</option>
+        <option value="2">2 Storeys</option>
+        <option value="3+">3+ Storeys</option>
+      </select>
+    </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="storeys">Number of Storeys</label>
-                <select id="storeys" name="storeys" required>
-                  <option value="" disabled selected>Select</option>
-                  <option value="1">1 Storey</option>
-                  <option value="2">2 Storeys</option>
-                  <option value="3+">3+ Storeys</option>
-                </select>
-              </div>
+    <div class="form-group">
+      <label for="windows">Approx. Number of Windows</label>
+      <input type="number" id="windows" name="windows" placeholder="e.g. 15" min="1" required />
+    </div>
+  </div>
 
-              <div class="form-group">
-                <label for="windows">Approx. Number of Windows</label>
-                <input type="number" id="windows" name="windows" placeholder="e.g. 15" min="1" required />
-              </div>
-            </div>
+  <div class="form-group">
+    <label for="promoCode">Promo Code</label>
+    <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code" />
+  </div>
 
-            <div class="form-group">
-              <label for="promoCode">Promo Code</label>
-              <input type="text" id="promoCode" name="promoCode" placeholder="Enter promo code" />
-            </div>
+  <div class="form-group">
+    <label for="notes">Additional Notes</label>
+    <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
+  </div>
 
-            <div class="form-group">
-              <label for="notes">Additional Notes</label>
-              <textarea id="notes" name="notes" placeholder="Any details about your property, access, or specific requests..."></textarea>
-            </div>
-
-            <button type="submit" class="form-submit">Request My Free Quote</button>
-            <p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
-          </form>
+  <button type="submit" class="form-submit">Request My Free Quote</button>
+  <p class="form-note">We typically respond within a few hours. Your information is never shared.</p>
+</form>
         </div>
       </div>
     </div>
@@ -1951,213 +1941,215 @@
   </div>
 
   <script>
-    const nav = document.getElementById('nav');
+    <script>
+  const nav = document.getElementById('nav');
 
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    function closeQuotePopup() {
-      document.getElementById('quotePopup').classList.remove('open');
-    }
-
-    function closePromoPopup() {
-      document.getElementById('promoPopup').classList.remove('open');
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const promoPopup = document.getElementById('promoPopup');
-
-      if (promoPopup) {
-        promoPopup.classList.remove('open');
-
-        setTimeout(() => {
-          promoPopup.classList.add('open');
-        }, 800);
-      }
-
-      initPhoneFormatting();
-      if (window.google && google.maps && google.maps.places) {
-        initAddressAutocomplete();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
       }
     });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    function initPhoneFormatting() {
-      const phoneInput = document.getElementById('phone');
-      if (!phoneInput) return;
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-      phoneInput.addEventListener('input', function (e) {
-        let numbers = e.target.value.replace(/\D/g, '');
+  function closeQuotePopup() {
+    document.getElementById('quotePopup').classList.remove('open');
+  }
 
-        if (numbers.length === 0) {
-          e.target.value = '';
-          return;
-        }
+  function closePromoPopup() {
+    document.getElementById('promoPopup').classList.remove('open');
+  }
 
-        if (!numbers.startsWith('1')) {
-          numbers = '1' + numbers;
-        }
+  document.addEventListener('DOMContentLoaded', function () {
+    const promoPopup = document.getElementById('promoPopup');
 
-        numbers = numbers.slice(0, 11);
+    if (promoPopup) {
+      promoPopup.classList.remove('open');
 
-        let formatted = numbers.charAt(0);
-        if (numbers.length > 1) formatted += '-' + numbers.slice(1, 4);
-        if (numbers.length > 4) formatted += '-' + numbers.slice(4, 7);
-        if (numbers.length > 7) formatted += '-' + numbers.slice(7, 11);
-
-        e.target.value = formatted;
-      });
-
-      phoneInput.addEventListener('focus', function () {
-        if (!this.value) this.value = '1-';
-      });
-
-      phoneInput.addEventListener('keydown', function (e) {
-        if (this.value === '1-' && (e.key === 'Backspace' || e.key === 'Delete')) {
-          e.preventDefault();
-        }
-      });
-
-      phoneInput.addEventListener('blur', function () {
-        if (this.value === '1-') this.value = '';
-      });
+      setTimeout(() => {
+        promoPopup.classList.add('open');
+      }, 800);
     }
 
-    let addressAutocomplete;
+    initPhoneFormatting();
 
-    function initAddressAutocomplete() {
-      const addressInput = document.getElementById('address');
-      if (!addressInput || !window.google || !google.maps || !google.maps.places) return;
-
-      addressAutocomplete = new google.maps.places.Autocomplete(addressInput, {
-        types: ['address'],
-        componentRestrictions: { country: 'ca' },
-        fields: ['formatted_address', 'address_components', 'geometry']
-      });
-
-      addressAutocomplete.addListener('place_changed', () => {
-        const place = addressAutocomplete.getPlace();
-        if (place && place.formatted_address) {
-          addressInput.value = place.formatted_address;
-        }
-      });
+    if (window.google && google.maps && google.maps.places) {
+      initAddressAutocomplete();
     }
+  });
 
-    function makePriceLookBetter(value) {
-      return Math.ceil(value) + 0.99;
-    }
+  function initPhoneFormatting() {
+    const phoneInput = document.getElementById('phone');
 
-    function buildCalendlyLink(serviceName, estimatedPrice, data) {
-      const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
-      const fullAddress = `${data.get('address') || ''}, ${data.get('city') || ''}`;
+    if (!phoneInput) return;
 
-      const params = new URLSearchParams({
-        name: data.get('fullName') || '',
-        email: data.get('email') || '',
-        a1: fullAddress,
-        a2: data.get('phone') || '',
-        a3: data.get('storeys') || '',
-        a4: data.get('windows') || '',
-        a5: data.get('notes') || 'N/A',
-        a6: serviceName,
-        a7: estimatedPrice
-      });
+    phoneInput.addEventListener('input', function (e) {
+      let numbers = e.target.value.replace(/\D/g, '');
 
-      return `${base}?${params.toString()}`;
-    }
+      if (numbers.length === 0) {
+        e.target.value = '';
+        return;
+      }
 
-    function handleSubmit(e) {
-      e.preventDefault();
+      if (!numbers.startsWith('1')) {
+        numbers = '1' + numbers;
+      }
 
-      const form = e.target;
-      const data = new FormData(form);
+      numbers = numbers.slice(0, 11);
 
-      const windows = parseInt(data.get('windows'), 10) || 0;
-      const storeys = data.get('storeys');
-      const promoCode = (data.get('promoCode') || '').trim().toUpperCase();
+      let formatted = numbers.charAt(0);
+      if (numbers.length > 1) formatted += '-' + numbers.slice(1, 4);
+      if (numbers.length > 4) formatted += '-' + numbers.slice(4, 7);
+      if (numbers.length > 7) formatted += '-' + numbers.slice(7, 11);
 
-      const baseFee = 100;
-      const perWindow = 4;
+      e.target.value = formatted;
+    });
 
-  
-      const justInteriorRaw = baseFee + (windows * perWindow);
-      const justExteriorRaw = baseFee + (windows * perWindow);
-      const justScreensRaw = windows * 4;
-      const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
+    phoneInput.addEventListener('focus', function () {
+      if (!this.value) this.value = '1-';
+    });
 
-      const fullPackageBaseRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
-      const promoApplied = promoCode === "SPRING26";
-      const minimumFullPackagePrice = interiorAndExteriorRaw + 20;
+    phoneInput.addEventListener('keydown', function (e) {
+      if (this.value === '1-' && (e.key === 'Backspace' || e.key === 'Delete')) {
+        e.preventDefault();
+      }
+    });
+
+    phoneInput.addEventListener('blur', function () {
+      if (this.value === '1-') this.value = '';
+    });
+  }
+
+  let addressAutocomplete;
+
+  function initAddressAutocomplete() {
+    const addressInput = document.getElementById('address');
+    if (!addressInput || !window.google || !google.maps || !google.maps.places) return;
+
+    addressAutocomplete = new google.maps.places.Autocomplete(addressInput, {
+      types: ['address'],
+      componentRestrictions: { country: 'ca' },
+      fields: ['formatted_address', 'address_components', 'geometry']
+    });
+
+    addressAutocomplete.addListener('place_changed', () => {
+      const place = addressAutocomplete.getPlace();
+      if (place && place.formatted_address) {
+        addressInput.value = place.formatted_address;
+      }
+    });
+  }
+
+  function makePriceLookBetter(value) {
+    return Math.ceil(value) + 0.99;
+  }
+
+  function buildCalendlyLink(serviceName, estimatedPrice, data) {
+    const base = "https://calendly.com/lswindowcleaninginquiries/window-cleaning";
+    const fullAddress = data.get('address') || '';
+
+    const params = new URLSearchParams({
+      name: data.get('fullName') || '',
+      email: data.get('email') || '',
+      a1: fullAddress,
+      a2: data.get('phone') || '',
+      a3: data.get('storeys') || '',
+      a4: data.get('windows') || '',
+      a5: data.get('notes') || 'N/A',
+      a6: serviceName,
+      a7: estimatedPrice
+    });
+
+    return `${base}?${params.toString()}`;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    const windows = parseInt(data.get('windows'), 10) || 0;
+    const promoCode = (data.get('promoCode') || '').trim().toUpperCase();
+
+    const baseFee = 100;
+    const perWindow = 4.5;
+
+    const justInteriorRaw = baseFee + (windows * perWindow);
+    const justExteriorRaw = baseFee + (windows * perWindow);
+    const justScreensRaw = windows * 4;
+    const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
+
+    const fullPackageBaseRaw = justInteriorRaw + justExteriorRaw + justScreensRaw - 100;
+    const promoApplied = promoCode === "SPRING26";
+    const minimumFullPackagePrice = interiorAndExteriorRaw + 20;
+
     const fullPackageDiscountedRaw = promoApplied
       ? Math.max(fullPackageBaseRaw - 75, minimumFullPackagePrice)
       : fullPackageBaseRaw;
 
-      const justInterior = makePriceLookBetter(justInteriorRaw);
-      const justExterior = makePriceLookBetter(justExteriorRaw);
-      const justScreens = makePriceLookBetter(justScreensRaw);
-      const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
-      const fullPackageOriginal = makePriceLookBetter(fullPackageBaseRaw);
-      const fullPackageDiscounted = makePriceLookBetter(fullPackageDiscountedRaw);
+    const justInterior = makePriceLookBetter(justInteriorRaw);
+    const justExterior = makePriceLookBetter(justExteriorRaw);
+    const justScreens = makePriceLookBetter(justScreensRaw);
+    const interiorAndExterior = makePriceLookBetter(interiorAndExteriorRaw);
+    const fullPackageOriginal = makePriceLookBetter(fullPackageBaseRaw);
+    const fullPackageDiscounted = makePriceLookBetter(fullPackageDiscountedRaw);
 
-      document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
-      document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
-      document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
-      document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
-      document.getElementById('priceFull').textContent = `$${fullPackageDiscounted.toFixed(2)}`;
+    document.getElementById('priceInterior').textContent = `$${justInterior.toFixed(2)}`;
+    document.getElementById('priceExterior').textContent = `$${justExterior.toFixed(2)}`;
+    document.getElementById('priceScreens').textContent = `$${justScreens.toFixed(2)}`;
+    document.getElementById('priceWindows').textContent = `$${interiorAndExterior.toFixed(2)}`;
+    document.getElementById('priceFull').textContent = `$${fullPackageDiscounted.toFixed(2)}`;
 
-      const oldPriceEl = document.getElementById('priceFullOld');
+    const oldPriceEl = document.getElementById('priceFullOld');
 
-      if (promoApplied) {
-        oldPriceEl.textContent = `$${fullPackageOriginal.toFixed(2)}`;
-        oldPriceEl.classList.add('show');
-      } else {
-        oldPriceEl.textContent = '';
-        oldPriceEl.classList.remove('show');
-      }
-
-      document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
-      document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
-      document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
-      document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
-      document.getElementById('bookFull').href = buildCalendlyLink(
-        promoApplied ? 'Full Package (SPRING26 Applied)' : 'Full Package',
-        `$${fullPackageDiscounted.toFixed(2)}`,
-        data
-      );
-
-      document.getElementById('quotePopup').classList.add('open');
+    if (promoApplied) {
+      oldPriceEl.textContent = `$${fullPackageOriginal.toFixed(2)}`;
+      oldPriceEl.classList.add('show');
+    } else {
+      oldPriceEl.textContent = '';
+      oldPriceEl.classList.remove('show');
     }
 
-    window.addEventListener('click', function (e) {
-      const quotePopup = document.getElementById('quotePopup');
-      const promoPopup = document.getElementById('promoPopup');
+    document.getElementById('bookInterior').href = buildCalendlyLink('Just Interior', `$${justInterior.toFixed(2)}`, data);
+    document.getElementById('bookExterior').href = buildCalendlyLink('Just Exterior', `$${justExterior.toFixed(2)}`, data);
+    document.getElementById('bookScreens').href = buildCalendlyLink('Just Screens', `$${justScreens.toFixed(2)}`, data);
+    document.getElementById('bookWindows').href = buildCalendlyLink('Interior + Exterior Only', `$${interiorAndExterior.toFixed(2)}`, data);
+    document.getElementById('bookFull').href = buildCalendlyLink(
+      promoApplied ? 'Full Package (SPRING26 Applied)' : 'Full Package',
+      `$${fullPackageDiscounted.toFixed(2)}`,
+      data
+    );
 
-      if (e.target === quotePopup) {
-        closeQuotePopup();
-      }
+    document.getElementById('quotePopup').classList.add('open');
+  }
 
-      if (e.target === promoPopup) {
-        closePromoPopup();
-      }
-    });
+  window.addEventListener('click', function (e) {
+    const quotePopup = document.getElementById('quotePopup');
+    const promoPopup = document.getElementById('promoPopup');
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        closeQuotePopup();
-        closePromoPopup();
-      }
-    });
+    if (e.target === quotePopup) {
+      closeQuotePopup();
+    }
+
+    if (e.target === promoPopup) {
+      closePromoPopup();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeQuotePopup();
+      closePromoPopup();
+    }
+  });
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiBK6H2aXM8dddngLsHc-VwWt9IBaMop8&libraries=places&callback=initAddressAutocomplete"></script>
 </body>
