@@ -2089,10 +2089,10 @@
 
       const baseFee = 100;
       const perWindow = 4.5;
-      const extraThreeStorey = storeys === "3+" ? 100 : 0;
 
-      const justInteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
-      const justExteriorRaw = baseFee + (windows * perWindow) + extraThreeStorey;
+  
+      const justInteriorRaw = baseFee + (windows * perWindow);
+      const justExteriorRaw = baseFee + (windows * perWindow);
       const justScreensRaw = windows * 4;
       const interiorAndExteriorRaw = justInteriorRaw + justExteriorRaw - 50;
 
