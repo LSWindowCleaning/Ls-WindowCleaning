@@ -891,6 +891,13 @@
       background: rgba(59, 130, 246, 0.06);
       box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     }
+    .pac-container {
+  z-index: 99999 !important;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  font-family: 'Inter', sans-serif;
+}
 
     .form-group select {
       appearance: none;
@@ -2152,6 +2159,6 @@
       }
     });
   </script>
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiBK6H2aXM8dddngLsHc-VwWt9IBaMop8&libraries=places&callback=initAddressAutocomplete"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiBK6H2aXM8dddngLsHc-VwWt9IBaMop8&libraries=places&callback=initAddressAutocomplete"></script>
 </body>
 </html>
