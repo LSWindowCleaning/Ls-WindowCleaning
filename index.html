@@ -1320,6 +1320,13 @@
       cursor: pointer;
       transition: background 0.3s;
     }
+    .promo-popup-btn.one-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
 
     .promo-popup-btn:hover {
       background: #1d4ed8;
@@ -1935,8 +1942,9 @@
       <div class="promo-popup-badge">Limited Time Offer</div>
       <h3>$75 Off Full Home Package</h3>
       <p>Book your full home package and use promo code <strong>SPRING26</strong> in the quote form to get $75 off.</p>
-      <div class="promo-code-pill">SPRING26</div>
-      <a href="#quote" class="promo-popup-btn" onclick="closePromoPopup()">Get My Free Quote</a>
+      <a href="#quote" class="promo-popup-btn one-btn" onclick="closePromoPopup()">
+  Get My Free Quote - Use SPRING26
+</a>
     </div>
   </div>
 
