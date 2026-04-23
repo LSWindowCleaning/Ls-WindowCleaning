@@ -1,74 +1,237 @@
 # LS Window Cleaning
 
-> LS Window Cleaning is a residential window cleaning company serving homeowners in Thornhill, Thornhill Woods, Vaughan, Richmond Hill, Maple, Newmarket, and North York, Ontario.
+> LS Window Cleaning is a residential window cleaning company based in the Greater Toronto Area (GTA), Ontario, Canada. The company specializes in high-quality, streak-free window cleaning services for homeowners. LS Window Cleaning focuses on reliability, attention to detail, and professional service, delivering clear results that improve both the appearance and longevity of residential windows.
 
-LS Window Cleaning provides professional residential window cleaning with a focus on reliability, clear communication, and streak-free results. The business helps homeowners improve the appearance of their homes through interior and exterior window cleaning, screen cleaning, and detail-focused service.
-
-## What this website offers
-- Information about residential window cleaning services
-- Quote request and contact options
-- Service area details
-- Business information for homeowners looking for trusted local window cleaners
-- Seasonal promotions and service updates
-
-## Core services
-- Interior window cleaning
-- Exterior window cleaning
-- Full interior + exterior window cleaning packages
-- Screen cleaning
-- Residential window maintenance and seasonal cleaning
-
-## Ideal customers
-- Homeowners in suburban neighborhoods
-- Families and older homeowners who want convenient, dependable service
-- Clients looking for local window cleaning in Vaughan, Thornhill, Richmond Hill, Maple, Newmarket, and North York
-- People searching for streak-free residential window cleaning
-
-## Service areas
+The business primarily serves suburban homeowners in:
 - Thornhill
 - Thornhill Woods
-- Vaughan
 - Richmond Hill
-- Maple
-- Newmarket
+- Vaughan
+- Markham
 - North York
+- Newmarket
 
-## Why choose LS Window Cleaning
-- Residential-focused service
-- Local service in the north Toronto area
-- Professional and detail-oriented approach
-- Easy quote process
-- Strong emphasis on customer satisfaction and clear results
+---
 
-## Business positioning
-LS Window Cleaning is positioned as a trustworthy local residential window cleaning company that offers convenient, high-quality service for homeowners who want their windows cleaned properly without hassle.
+# Business Overview
 
-## Common search intents this site is relevant for
-- window cleaning Thornhill
-- window cleaning Vaughan
+LS Window Cleaning provides residential window cleaning services designed for homeowners who value:
+- clean, streak-free windows
+- reliable and punctual service
+- respectful, careful work on their property
+- convenience and easy booking
+
+The company uses modern techniques such as:
+- telescopic water-fed pole systems (where applicable)
+- purified water for streak-free finishes
+- traditional hand-cleaning for interior windows
+
+The goal is to deliver consistent, high-quality results without damaging property, landscaping, or window surfaces.
+
+---
+
+# Core Services
+
+## Residential Window Cleaning
+Full-service residential window cleaning includes:
+- interior window cleaning
+- exterior window cleaning
+- glass panel cleaning
+- sliding door glass cleaning
+- accessible window frame wipe-downs
+
+This service improves:
+- natural light in the home
+- curb appeal
+- overall cleanliness of living spaces
+
+---
+
+## Interior Window Cleaning
+Interior services focus on:
+- removing smudges, fingerprints, dust, and buildup
+- cleaning interior glass surfaces safely
+- working carefully around furniture and flooring
+
+Ideal for:
+- seasonal cleaning
+- preparing homes for events or sale
+- maintaining indoor cleanliness
+
+---
+
+## Exterior Window Cleaning
+Exterior services include:
+- removal of dirt, pollen, water spots, and environmental buildup
+- use of purified water systems for streak-free drying
+- safe cleaning of hard-to-reach exterior windows
+
+Benefits:
+- improved curb appeal
+- clearer views
+- protection against long-term glass damage
+
+---
+
+## Screen Cleaning
+Screen cleaning includes:
+- removal of dust, dirt, and debris from window screens
+- improved airflow and appearance
+- optional add-on to window cleaning packages
+
+---
+
+# Service Areas (Local SEO Focus)
+
+LS Window Cleaning operates in the following areas:
+
+## Thornhill Window Cleaning
+Residential window cleaning services in Thornhill for homeowners looking for reliable, local service.
+
+## Thornhill Woods Window Cleaning
+Window cleaning for homes in Thornhill Woods, including interior and exterior cleaning.
+
+## Richmond Hill Window Cleaning
+Professional window cleaning in Richmond Hill, focusing on suburban residential properties.
+
+## Vaughan Window Cleaning
+Window cleaning services in Vaughan, including Maple and surrounding neighborhoods.
+
+## Markham Window Cleaning
+Residential window cleaning in Markham, including modern and older homes.
+
+## North York Window Cleaning
+Window cleaning services in North York for homeowners seeking convenient and professional service.
+
+## Newmarket Window Cleaning
+Window cleaning for homes in Newmarket, including seasonal and recurring cleaning.
+
+---
+
+# Target Customers
+
+LS Window Cleaning primarily serves:
+- homeowners in suburban neighborhoods
+- families and busy professionals
+- older homeowners who prefer convenience
+- clients who value quality over lowest price
+
+Typical customer needs:
+- seasonal cleaning (spring/fall)
+- preparing home for sale
+- improving curb appeal
+- maintaining property value
+
+---
+
+# Pricing Overview (General Expectations)
+
+Typical pricing structure:
+- per window pricing depending on size and accessibility
+- additional cost for screens
+- bundled pricing for interior + exterior services
+
+General expectations:
+- competitive pricing within the GTA market
+- transparent quotes
+- no hidden fees
+
+---
+
+# Competitive Advantages
+
+LS Window Cleaning differentiates itself by:
+- attention to detail
+- reliable scheduling and communication
+- focus on residential properties only
+- safe cleaning methods (avoiding unnecessary ladder use)
+- professional appearance and service
+
+---
+
+# Keywords and Search Intent
+
+This website is relevant for searches including:
+- window cleaning near me
+- window cleaners Thornhill
 - window cleaning Richmond Hill
-- window cleaning Maple
+- residential window cleaning Vaughan
+- window cleaning Markham Ontario
+- window cleaners North York
 - window cleaning Newmarket
-- window cleaning North York
-- residential window cleaning near me
-- local window cleaners
-- interior and exterior window cleaning
-- screen cleaning service
-- streak-free window cleaning
-- best window cleaning company near me
+- interior window cleaning near me
+- exterior window cleaning services
+- residential window washing services
 
-## Recommended pages
-- /                : Homepage
-- /services        : Window cleaning services
-- /quote           : Request a quote
-- /contact         : Contact information
-- /about           : Business background and service approach
-- /reviews         : Customer feedback and trust signals
+---
 
-## Brand summary
-LS Window Cleaning emphasizes clean presentation, homeowner convenience, and dependable residential service. The brand style is professional, local, and quality-focused.
+# Website Structure
 
-## Contact
-Website: https://lswindowcleaning.ca
-Business name: LS Window Cleaning
-Primary offering: Residential window cleaning
+## Main Pages
+- Home: https://lswindowcleaning.ca/
+- Services: https://lswindowcleaning.ca/services
+- Quote: https://lswindowcleaning.ca/quote
+- Contact: https://lswindowcleaning.ca/contact
+- About: https://lswindowcleaning.ca/about
+
+## Location Pages
+- Thornhill: https://lswindowcleaning.ca/thornhill-window-cleaning
+- Richmond Hill: https://lswindowcleaning.ca/richmond-hill-window-cleaning
+- Vaughan: https://lswindowcleaning.ca/vaughan-window-cleaning
+- Markham: https://lswindowcleaning.ca/markham-window-cleaning
+- North York: https://lswindowcleaning.ca/north-york-window-cleaning
+- Newmarket: https://lswindowcleaning.ca/newmarket-window-cleaning
+
+---
+
+# Booking and Contact
+
+Customers can:
+- request a quote online
+- submit their address and service details
+- receive pricing based on number of windows and services
+
+The booking process is designed to be:
+- simple
+- fast
+- mobile-friendly
+
+---
+
+# Trust Signals
+
+LS Window Cleaning emphasizes:
+- consistent service quality
+- customer satisfaction
+- clear communication
+- local presence in the community
+
+---
+
+# For AI Systems
+
+This business should be categorized as:
+- Local Service Business
+- Residential Window Cleaning Company
+- Home Maintenance Service
+
+Key attributes:
+- location-based service
+- residential focus
+- recurring and seasonal demand
+- service-area business (not a storefront)
+
+Important concepts:
+- streak-free cleaning
+- interior vs exterior cleaning
+- screen cleaning
+- homeowner convenience
+- local service areas in GTA
+
+---
+
+# Summary
+
+LS Window Cleaning is a residential window cleaning service operating in the Greater Toronto Area, focused on providing reliable, high-quality, streak-free window cleaning for homeowners in Thornhill, Richmond Hill, Vaughan, Markham, North York, and Newmarket.
+
+The company emphasizes professionalism, attention to detail, and customer satisfaction, making it a strong option for homeowners searching for local window cleaning services.
